@@ -19,16 +19,8 @@ import global from '../../../utility/global';
 import messaging from '@react-native-firebase/messaging';
 import {Dropdown} from 'react-native-element-dropdown';
 import {BarChart} from 'react-native-chart-kit';
+import setOfStrings from '../../../utility/screenStrings';
 var PushNotification = require('react-native-push-notification');
-
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-  datasets: [
-    {
-      data: [20, 45, 28, 80, 99, 43],
-    },
-  ],
-};
 
 const recentPrecautionData = [
   {
@@ -54,7 +46,7 @@ export default function Dashboard({navigation}) {
     navigation.setOptions({
       header: () => (
         <Header
-          title={'Hey Username'}
+          title={setOfStrings.hey+' '+'Username'}
           showBackButton={false}
           navigation={navigation}
           endRippleIcon={'phone-call'}
@@ -251,7 +243,7 @@ export default function Dashboard({navigation}) {
       showsVerticalScrollIndicator={false}>
       <View>
         <View style={internalStyles.home}>
-          <Text style={internalStyles.header}>Overview</Text>
+          <Text style={internalStyles.header}>{setOfStrings.overview}</Text>
         </View>
         <View>
           <View
@@ -261,12 +253,12 @@ export default function Dashboard({navigation}) {
               marginVertical: 10,
             }}>
             {rederRectangle(
-              'Total Crops',
+              setOfStrings.totalCrops,
               '1000',
               require('../../../assets/images/totalcrops.png'),
             )}
             {rederRectangle(
-              'Total Farm Area',
+              setOfStrings.totalFarmArea,
               '1000',
               require('../../../assets/images/farmarea.png'),
             )}
@@ -278,12 +270,12 @@ export default function Dashboard({navigation}) {
               marginVertical: 10,
             }}>
             {rederRectangle(
-              'Total Desased Crops',
+              setOfStrings.totalDiseasedCrop,
               '1000',
               require('../../../assets/images/diseasedcrops.png'),
             )}
             {rederRectangle(
-              'Total Production',
+              setOfStrings.totalProduction,
               '1000',
               require('../../../assets/images/totalproduction.png'),
             )}
@@ -292,7 +284,7 @@ export default function Dashboard({navigation}) {
       </View>
       <View style={internalStyles.earningAndSales}>
         <View style={internalStyles.home}>
-          <Text style={internalStyles.header}>Production Details</Text>
+          <Text style={internalStyles.header}>{setOfStrings.productionDetails}</Text>
         </View>
         <View style={{flex: 1, padding: 5, alignItems: 'center'}}>
           <BarChart
@@ -303,7 +295,7 @@ export default function Dashboard({navigation}) {
             }}
             height={180}
             data={{
-              labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+              labels: [setOfStrings.jan, setOfStrings.feb, setOfStrings.mar, setOfStrings.apr, setOfStrings.may, setOfStrings.jun],
               datasets: [
                 {
                   data: [20, 45, 28, 80, 99, 43],
@@ -339,7 +331,7 @@ export default function Dashboard({navigation}) {
       <View styles={internalStyles.recentPrecaution}>
         <View
           style={[internalStyles.home, {paddingVertical: 0, paddingTop: 15}]}>
-          <Text style={internalStyles.header}>Recent Precautions</Text>
+          <Text style={internalStyles.header}>{setOfStrings.recentPrecautions}</Text>
         </View>
           <FlatList
             data={recentPrecautionData}

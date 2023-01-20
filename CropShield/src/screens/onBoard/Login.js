@@ -11,6 +11,7 @@ import {useForm} from 'react-hook-form';
 import global from '../../utility/global';
 import fonts from '../../utility/fonts';
 import colors from '../../styles/colors';
+import setOfStrings from '../../utility/screenStrings'
 
 const apiKey = {
   USERTYPE: 'userType',
@@ -18,8 +19,9 @@ const apiKey = {
   PASSWORD: 'password',
 };
 
-export default function Login({navigation}) {
+export default function Login({route,navigation}) {
   const [isLoading, setLoading] = useState(false);
+  // accept params from ChooseLanguage.js
   const {
     control,
     handleSubmit,
@@ -68,12 +70,12 @@ export default function Login({navigation}) {
         showsVerticalScrollIndicator={false}>
         <View style={internalstyles.mainContainer}>
           <View style={internalstyles.centerLogin}>
-            <Text style={styles.titleOnBoard}>Login</Text>
+            <Text style={styles.titleOnBoard}>{setOfStrings.login}</Text>
           </View>
           <View style={{paddingHorizontal: 22}}>
             <CommonInput
               name={apiKey.USERNAME}
-              title={constants.TXT_USERNAME}
+              title={setOfStrings.username}
               starMark={true}
               control={control}
               errors={errors}
@@ -93,7 +95,7 @@ export default function Login({navigation}) {
 
             <CommonInput
               name={apiKey.PASSWORD}
-              title={constants.TXT_PASSWORD}
+              title={setOfStrings.password}
               starMark={true}
               control={control}
               errors={errors}
@@ -116,22 +118,22 @@ export default function Login({navigation}) {
           <View style={internalstyles.forgotPassword}>
             <Ripple onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={internalstyles.forgotPasswordText}>
-                {constants.TXT_FORGOT_PASSWORD}
+                {setOfStrings.forgotPassword}
               </Text>
             </Ripple>
           </View>
           <View style={internalstyles.notSignedUp}>
             <Text style={internalstyles.notSignedUpText}>
-              {constants.TXT_NOT_SIGNED_UP}
+              {setOfStrings.dontHaveAccount}
             </Text>
             <Ripple onPress={() => navigation.navigate('Signup')}>
               <Text style={internalstyles.signUpText}>
-                {constants.TXT_SIGN_UP}
+                {setOfStrings.signUp}
               </Text>
             </Ripple>
           </View>
           <View style={internalstyles.buttonLogin}>
-            <PrimaryButton title="Login" onPress={handleSubmit(doLogin)} />
+            <PrimaryButton title={setOfStrings.submit} onPress={handleSubmit(doLogin)} />
             <Ripple
               onPress={() => changeStack()}
               style={{
@@ -145,7 +147,7 @@ export default function Login({navigation}) {
                 justifyContent: 'center',
               }}>
               <Text style={{fontSize: fonts._14, color: colors.BLACK}}>
-                SKIP
+                {setOfStrings.skip}
               </Text>
             </Ripple>
           </View>
