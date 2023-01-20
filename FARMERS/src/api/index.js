@@ -13,3 +13,7 @@ API.interceptors.request.use((req) => {
 } , (error) => {
     return Promise.reject(error);
 } );
+
+export const cropPrediction = (crop) => API.post('/predict', crop);
+
+export const diseaseControl = (disease) => API.post('/disease', disease);
