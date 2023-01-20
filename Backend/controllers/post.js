@@ -1,7 +1,6 @@
-import Post from "../models/Post";
-import User from "../models/User";
+import Post from "../models/Post.js";
+import User from "../models/User.js";
 import { check, validationResult } from "express-validator";
-import auth from "../middleware/auth";
 
 export const createPost = async (req, res) => {
     const errors = validationResult(req);
@@ -9,13 +8,13 @@ export const createPost = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
 
     try {
-        const user = await User.findById(req.user.id).select('-password');
+        const user = await User.findById(req.params.id).select('-password');
 
         const newPost = new Post({
             title: req.body.title,
             name: user.name,
             // image: req.body.image,
-            user: req.user.id,
+            user: req.params.id,
             desc: req.body.desc,
         });
 
@@ -57,7 +56,7 @@ export const getPostById = async (req, res) => {
 export const deletePost = async (req, res) => {
     try {
 		const post = await Post.findById(req.params.id);
-
+		console.log("hello");
 		// Check for ObjectId format and post
 		if (!req.params.id.match(/^[0-9a-fA-F]{24}$/) || !post) {
 			return res.status(404).json({ msg: 'Post not found' });

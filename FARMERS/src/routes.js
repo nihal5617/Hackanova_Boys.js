@@ -14,8 +14,10 @@ import Weather from './pages/Weather';
 import Disease from './pages/Disease';
 import Settings from './pages/Settings';
 import CropPrediction from './pages/CropPrediction';
+import Register from './pages/Register';
 
 // ----------------------------------------------------------------------
+const user = (JSON.parse(localStorage.getItem('profile')));
 
 export default function Router() {
   const routes = useRoutes([
@@ -40,9 +42,13 @@ export default function Router() {
       element: <LoginPage />,
     },
     {
+      path: 'register',
+      element: <Register />,
+    },
+    {
       element: <SimpleLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: '/', element: user ? <Navigate to="/dashboard/app" /> : <Navigate to="/login" /> },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
       ],
