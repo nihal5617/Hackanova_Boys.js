@@ -30,46 +30,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { diseaseControl } from '../actions/diseaseControl/diseaseControl';
 
-// const style = {
-//   position: 'absolute',
-//   top: '50%',
-//   left: '50%',
-//   width: '100%',
-//   transform: 'translate(-50%, -50%)',
-//   maxWidth: 800,
-//   bgcolor: 'background.paper',
-//   // border: '2px solid #000',
-//   boxShadow: 1,
-//   p: 2,
-// };
-
-// function TabPanel(props) {
-//   const { children, value, index, ...other } = props;
-
-//   return (
-//     <div
-//       role="tabpanel"
-//       hidden={value !== index}
-//       id={`simple-tabpanel-${index}`}
-//       aria-labelledby={`simple-tab-${index}`}
-//       {...other}
-//     >
-//       {value === index && (
-//         <Box sx={{ p: 2 }}>
-//           <Typography>{children}</Typography>
-//         </Box>
-//       )}
-//     </div>
-//   );
-// }
-
-// TabPanel.propTypes = {
-//   children: PropTypes.node,
-//   index: PropTypes.number.isRequired,
-//   value: PropTypes.number.isRequired,
-// };
 
 function a11yProps(index) {
   return {
@@ -78,9 +39,14 @@ function a11yProps(index) {
   };
 }
 
-const Disease = () => {
+const Post = () => {
+
+  const {id} = useParams();
+
+  console.log(id);
 
   const dispatch = useDispatch();
+
   const [image, setImage] = useState();
   const [url, setUrl] = useState();
 
@@ -108,7 +74,7 @@ const Disease = () => {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Disease Control
+            
           </Typography>
         </Stack>
         <Card sx={{ p: 2 }}>
@@ -150,4 +116,4 @@ const Disease = () => {
   );
 };
 
-export default Disease;
+export default Post;
