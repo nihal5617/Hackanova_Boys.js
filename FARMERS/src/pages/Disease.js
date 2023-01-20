@@ -26,6 +26,7 @@ import {
   Tabs,
   Modal,
   IconButton,
+  CardActionArea,
 } from '@mui/material';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -81,11 +82,13 @@ const Disease = () => {
 
   const dispatch = useDispatch();
   const [image, setImage] = useState();
+  const [url, setUrl] = useState();
 
   const handleImageFile = (e) => {
     setImage(e.target.files[0]);
+    setUrl(URL.createObjectURL(e.target.files[0]));
   };
-
+  console.log(image);
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
@@ -132,7 +135,16 @@ const Disease = () => {
             </Button>
           </Box>
           </form>
+          <CardActionArea>
+          <img
+            width="100%"
+            // className={classes.media}
+            src={url}
+            alt="Lance"
+          />
+        </CardActionArea>
         </Card>
+
       </Container>
     </>
   );
