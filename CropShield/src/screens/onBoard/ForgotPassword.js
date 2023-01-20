@@ -13,6 +13,7 @@ import colors from '../../styles/colors';
 import styles from '../../styles/styles';
 import constants from '../../utility/constants';
 import global from '../../utility/global';
+import setOfStrings from '../../utility/screenStrings';
 
 const apiKey = {
   USERTYPE: 'userType',
@@ -67,7 +68,7 @@ export default function ForgotPassword({navigation}) {
             </View>
             <View style={{width: '65%', alignItems: 'flex-start'}}>
               <Text style={styles.titleOnBoard}>
-                {constants.TXT_RESET_PASS}
+                {setOfStrings.resetPassword}
               </Text>
             </View>
           </View>
@@ -75,7 +76,7 @@ export default function ForgotPassword({navigation}) {
           <View style={{paddingHorizontal: '5%'}}>
             <CommonInput
               name={apiKey.USERNAME}
-              title={constants.TXT_USERNAME}
+              title={setOfStrings.username}
               starMark={true}
               control={control}
               errors={errors}
@@ -96,7 +97,7 @@ export default function ForgotPassword({navigation}) {
 
           <View style={internalstyles.button}>
             <PrimaryButton
-              title={constants.TXT_RESET_PASS}
+              title={setOfStrings.resetPassword}
               onPress={handleSubmit(callApi)}
             />
           </View>

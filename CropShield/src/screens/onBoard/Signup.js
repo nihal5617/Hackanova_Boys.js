@@ -100,7 +100,7 @@ export default function Signup({navigation}) {
                   styles.titleOnBoard,
                   {color: colors.BLACK, fontFamily: fonts.FONT_FAMILY.Regular},
                 ]}>
-                Step 1:{' '}
+                Start:{' '}
               </Text>
               <Text style={styles.titleOnBoard}>Sign Up</Text>
             </View>

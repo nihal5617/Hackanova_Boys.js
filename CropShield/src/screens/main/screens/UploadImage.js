@@ -11,6 +11,7 @@ import Collapsible from 'react-native-collapsible';
 import Ripple from 'react-native-material-ripple';
 import colors from '../../../styles/colors';
 import repos from '../../../repos/repos';
+import setOfStrings from '../../../utility/screenStrings';
 
 const apikey = {
   IMAGE: 'image',
@@ -34,7 +35,7 @@ export default function UploadImage({navigation}) {
   const drawToolbar = () => {
     navigation.setOptions({
       header: () => (
-        <Header title="Check For Disease" navigation={navigation} />
+        <Header title={setOfStrings.checkForDisease} navigation={navigation} />
       ),
     });
   };
@@ -107,18 +108,18 @@ export default function UploadImage({navigation}) {
         rules={{
           required: true,
         }}
-        recomText={'Recommended Size: 165px*65px'}
+        recomText={setOfStrings.recomSize}
         style={{marginBottom: 17}}
         disabled={isLoading}
       />
 
       <PrimaryButton
-        title="Check For Disease"
+        title={setOfStrings.checkForDisease}
         onPress={handleSubmit(check)}
         style={{marginBottom: 10, width: '100%'}}
       />
       <PrimaryButton
-        title="Expert Advice"
+        title={setOfStrings.expertAdvice}
         onPress={handleSubmit(expertAdvice)}
         style={{marginBottom: 10, width: '100%'}}
       />
@@ -128,7 +129,7 @@ export default function UploadImage({navigation}) {
           <View style={internalStyles.inRowAndEnd}>
             <View style={{width: '90%'}}>
               <Text style={internalStyles.title}>
-                Disease : {output.Disease}
+                {setOfStrings.disease} : {output.Disease}
               </Text>
             </View>
             {isCollapsible ? (
