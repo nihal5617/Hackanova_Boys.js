@@ -34,6 +34,7 @@ const setOfStrings = new LocalizedStrings({
         crop: "Crop",
         causes: "Causes",
         treatment: "Treatment",
+        tutorial: "Tutorial",
     },
     hi: {
         login: "लॉग इन करें",
@@ -67,6 +68,7 @@ const setOfStrings = new LocalizedStrings({
         crop: "फसल",
         causes: "कारण",
         treatment: "इलाज",
+        tutorial: "ट्यूटोरियल",
     },
     ma: {
         login: "लॉग इन करें",
@@ -100,6 +102,7 @@ const setOfStrings = new LocalizedStrings({
         crop: "फसल",
         causes: "कारण",
         treatment: "इलाज",
+        tutorial: "ट्यूटोरियल",
     },
 });
 
