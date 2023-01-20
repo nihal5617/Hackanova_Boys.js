@@ -24,7 +24,7 @@ const list = [
 const accountInfo = {
   name: "Farmer's Name",
   mobile: '1234567890',
-  email: 'abc@gmail.com',
+  email: 'username',
 };
 export default function Settings({navigation}) {
   const [logo, setLogo] = React.useState(null);
