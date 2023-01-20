@@ -125,6 +125,7 @@ const CropPrediction = () => {
             name="n"
             value={conditions.n}
             onChange={handleChange}
+            helperText = "ratio of nitrogen content in the soil"
           />
             <TextField
             label="Phosphorus"
@@ -135,6 +136,7 @@ const CropPrediction = () => {
             name="p"
             value={conditions.p}
             onChange={handleChange}
+            helperText = "ratio of phosphorus content in the soil"
             />
           </Box>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, mt: 2, mb: 2 }}>
@@ -147,6 +149,7 @@ const CropPrediction = () => {
             name="k"
             value={conditions.k}
             onChange={handleChange}
+            helperText = "ratio of potassium content in the soil"
             />
             <TextField
             label="Temperature"
@@ -157,6 +160,7 @@ const CropPrediction = () => {
             name="temp"
             value={conditions.temp}
             onChange={handleChange}
+            helperText = "Temperature in degree celsius"
             />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, mt: 2, mb: 2 }}>
@@ -169,6 +173,7 @@ const CropPrediction = () => {
             name="hum"
             value={conditions.hum}
             onChange={handleChange}
+            helperText = "Relative humidity in %"
             />
             <TextField
             label="PH"
@@ -179,6 +184,7 @@ const CropPrediction = () => {
             name="ph"
             value={conditions.ph}
             onChange={handleChange}
+            helperText = "pH value of soil"
             />
             </Box>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, mt: 2, mb: 2 }}>
@@ -191,6 +197,7 @@ const CropPrediction = () => {
             name="rain"
             value={conditions.rain}
             onChange={handleChange}
+            helperText = "Rainfall in mm"
             />
             <Box sx={{ ml: { md: 1 }, width:'100%'}}/>
             </Box>
