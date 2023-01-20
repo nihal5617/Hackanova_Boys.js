@@ -30,7 +30,8 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { diseaseControl } from '../actions/diseaseControl/diseaseControl';
+import { diseaseControl } from '../../actions/diseaseControl/diseaseControl';
+import Prediction from './Prediction';
 
 // const style = {
 //   position: 'absolute',
@@ -79,29 +80,32 @@ function a11yProps(index) {
 }
 
 const Disease = () => {
-
   const dispatch = useDispatch();
   const [image, setImage] = useState();
   const [url, setUrl] = useState();
+
+  const [prediction, setPrediction] = useState();
 
   const handleImageFile = (e) => {
     setImage(e.target.files[0]);
     setUrl(URL.createObjectURL(e.target.files[0]));
   };
   console.log(image);
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      console.log(image)
+    try {
+      console.log(image);
       const formData = new FormData();
-      formData.append("image", image);
-      // dispatch(diseaseControl(formData));
-      const {data} = await axios.post("http://127.0.0.1:8000/predict", formData);
+      formData.append('image', image);
+      const { data } = await axios.post('http://127.0.0.1:8000/predict', formData);
       console.log(data);
-    }catch(err){
-      console.log(err)
+      setPrediction(data.Prediction);
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  console.log(prediction);
 
   return (
     <>
@@ -112,39 +116,37 @@ const Disease = () => {
           </Typography>
         </Stack>
         <Card sx={{ p: 2 }}>
-            <form onSubmit={handleSubmit}>
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, mt: 2, mb: 2 }}>
-            <Box sx={{ width: '100%', mr: { sm: 1 } }}>
-              <Button
-                variant="outlined"
-                fullWidth
-                component="label"
-                style={{ height: '37px' }}
-                value={image}
-                onChange={(e) => handleImageFile(e)}
-              >
-                Upload Crop Image
-                <input hidden accept="image/*" type="file" />
-              </Button>
+          <form onSubmit={handleSubmit}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, mt: 2, mb: 2, height:'200px' }}>
+              <Box sx={{ width: '100%', mr: { sm: 1 }, border: '1px solid lightgrey', borderRadius: '5px' }}>
+                <img width="100%" src={url} alt="Accepted file types: jpg, png, jpeg." style={{borderRadius:'5px'}}/>
+              </Box>
+              <Box sx={{ width: '100%', ml: { sm: 1 }, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }} >
+              <Box sx={{ width: '100%' }}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  component="label"
+                  style={{ height: '37px' }}
+                  value={image}
+                  onChange={(e) => handleImageFile(e)}
+                >
+                  Upload Crop Image
+                  <input hidden accept="image/*" type="file" />
+                </Button>
+              </Box>
+              <Box sx={{ width: '100%', mt:2 }}>
+                <Button variant="contained" fullWidth type="submit" style={{height:'40px'}}>
+                  Predict
+                </Button>
+              </Box>
             </Box>
-            <Box sx={{ width: '100%', ml: { sm: 1 } }}/>
-          </Box>
-          <Box sx={{ mt: 2 }}>
-            <Button variant="contained" color="primary" type="submit">
-              Submit
-            </Button>
-          </Box>
+            </Box>
           </form>
-          <CardActionArea>
-          <img
-            width="100%"
-            // className={classes.media}
-            src={url}
-            alt="Lance"
-          />
-        </CardActionArea>
         </Card>
-
+        <Box sx={{ mt: 2 }}>
+           { prediction ? <Prediction crop={prediction.Crop} cause={prediction.Cause} treatment={prediction.Treatment} disease={prediction.Disease} /> : null }
+        </Box>
       </Container>
     </>
   );

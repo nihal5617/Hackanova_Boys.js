@@ -117,21 +117,16 @@ export const unlikePost = async (req, res) => {
 };
 
 export const addComment = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return res.status(400).json({ errors: errors.array() });
-
   try {
-    const user = await User.findById(req.user.id).select("-password");
+    const user = await User.findById(req.body.id).select("-password");
     const post = await Post.findById(req.params.id);
 
     const newComment = new Post({
-      text: req.body.text,
+      title: req.body.text,
       name: user.name,
-      avatar: user.avatar,
-      user: req.user.id,
+      image: user.image,
+      user: req.body.id,
     });
-
     post.comments.unshift(newComment);
 
     await post.save();
