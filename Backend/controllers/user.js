@@ -5,15 +5,15 @@ import {check,validationResult } from 'express-validator';
 
 
 export const signup = async (req, res) => {
-    const errors = validationResult(req);
-    console.log(errors);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
-    console.log(req)
-    const { name, username, password,image, phone, location  } = req.body;
-
+    // const errors = validationResult(req);
+    // console.log(errors);
+    // if (!errors.isEmpty()) {
+    //     return res.status(400).json({ errors: errors.array() });
+    // }
+    console.log(req.body)
+    
     try {
+        const { name, username, password, phone, location  } = req.body;
         let user = await User.findOne({ username });
         if (user) {
             return res.status(400).json({ errors: [{ msg: 'User Exists!' }] });
@@ -22,22 +22,21 @@ export const signup = async (req, res) => {
             name,
             username,
             password,
-            image,
             phone,
             location
         });
-
+        console.log('here');
         const salt = await bcrypt.genSalt();
         user.password = await bcrypt.hash(password, salt);
 
         await user.save();
 
-        const payload = {
-            user: {
-                id: user.id,
-            },
-        };
-        const token = jwt.sign({id: admin.id}, process.env.SECRET, {
+        // const payload = {
+        //     user: {
+        //         id: user.id,
+        //     },
+        // };
+        const token = jwt.sign({id: user.id}, process.env.SECRET, {
             expiresIn: 86400 // 24 hours
         });
         res.status(200).send({
