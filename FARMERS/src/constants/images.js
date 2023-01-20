@@ -1,5 +1,5 @@
-// import furnishiLogo from '../assets/furnishi_logo.png';
+import farmarea from '../assets/farmarea.png';
 
 export default {
-    // furnishiLogo
+    farmarea
 }

@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // @mui
 import { styled } from '@mui/material/styles';
 //
 import Header from './header';
 import Nav from './nav';
+
+import { getPosts } from '../../actions/post/post';
 
 // ----------------------------------------------------------------------
 
@@ -34,6 +37,16 @@ const Main = styled('div')(({ theme }) => ({
 
 export default function DashboardLayout() {
   const [open, setOpen] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem('profile'));
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const getReduxData = () => {
+      dispatch(getPosts());
+    };
+    getReduxData();
+  }, [dispatch]);
 
   return (
     <StyledRoot>
