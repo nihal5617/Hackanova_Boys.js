@@ -10,9 +10,10 @@ import PrimaryButton from '../../../components/PrimaryButton';
 import Collapsible from 'react-native-collapsible';
 import Ripple from 'react-native-material-ripple';
 import colors from '../../../styles/colors';
+import repos from '../../../repos/repos';
 
 const apikey = {
-  LOGO: 'logo',
+  IMAGE: 'image',
 };
 
 export default function UploadImage({navigation}) {
@@ -38,8 +39,28 @@ export default function UploadImage({navigation}) {
     });
   };
 
-  const check = data => {
+  const onCheck = data => {
     console.log(data);
+    // setLoading(false);
+    // if (data.status) {
+    //   setOutput(data.data);
+    // } else {
+    //   global.showMessage(data.message, true, false);
+    // }
+  };
+
+  const check = data => {
+    const data2 = new FormData();
+    data2.append('image',data.image.uri);
+    console.log(data2);
+    global.isOnline().then(isNetworkAvailable => {
+      if (!isNetworkAvailable)
+        global.showMessage(constants.NO_INTERNET_SNACKBAR_MESSAGE, true, false);
+      else {
+        console.log('data2', data2);
+        repos.doPredict(data2, onCheck);
+      }
+    });
     setOutput({
       Crop: 'Tomato',
       Disease: 'Bacterial_spot',
@@ -79,7 +100,7 @@ export default function UploadImage({navigation}) {
         },
       ]}>
       <ImagePicker
-        name={apikey.LOGO}
+        name={apikey.IMAGE}
         title={'Image'}
         control={control}
         errors={errors}
