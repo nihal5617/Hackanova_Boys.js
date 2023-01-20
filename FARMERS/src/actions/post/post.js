@@ -1,10 +1,16 @@
-import {ADD_POST, GET_POST} from '../../constants/actionTypes';
+import {ADD_POST, GET_POST, GET_POSTS, LIKE_POST, UNLIKE_POST, DELETE_POST, COMMENT_POST} from '../../constants/actionTypes';
 import * as api from '../../api/index'
 
 export const getPosts = () => async(dispatch) => {
 }
 
-export const addPost = () => async(dispatch) => {
+export const addPost = (postInfo, id) => async(dispatch) => {
+    try{
+        const {data} = await api.addPost(postInfo, id);
+        dispatch({type: ADD_POST, payload: data});
+    }catch(error){
+        console.log(error);
+    }
 }
 
 export const addLike = () => async(dispatch) => {

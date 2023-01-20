@@ -6,7 +6,6 @@ import PostForm from "./PostForm";
 
 const Posts = (props) => {
   const {posts} = props
-  console.log(posts);
   // useEffect(() => {
   //   getPosts();
   // }, [getPosts]);
