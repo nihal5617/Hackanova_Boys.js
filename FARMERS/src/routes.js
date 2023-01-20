@@ -9,6 +9,11 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import Community from './pages/Community/Community';
+import Weather from './pages/Weather';
+import Disease from './pages/Disease';
+import Settings from './pages/Settings';
+import CropPrediction from './pages/CropPrediction';
 
 // ----------------------------------------------------------------------
 
@@ -23,6 +28,11 @@ export default function Router() {
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
+        { path: 'community', element: <Community /> },
+        { path: 'weather', element: <Weather /> },
+        { path: 'disease', element: <Disease /> },
+        { path: 'settings', element: <Settings /> },
+        { path: 'crop-prediction', element: <CropPrediction />}
       ],
     },
     {

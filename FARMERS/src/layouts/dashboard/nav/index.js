@@ -60,11 +60,12 @@ export default function Nav({ openNav, onCloseNav }) {
       <Box sx={{ mb: 5, mx: 2.5 }}>
         <Link underline="none">
           <StyledAccount>
-            <Avatar src={account.photoURL} alt="photoURL" />
+            {/* <Avatar src={account.photoURL} alt="photoURL" /> */}
 
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
-                {account.displayName}
+                {/* {account.displayName} */}
+                FARMERS PANEL
               </Typography>
 
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -79,7 +80,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
       <Box sx={{ flexGrow: 1 }} />
 
-      <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
+      {/* <Box sx={{ px: 2.5, pb: 3, mt: 10 }}>
         <Stack alignItems="center" spacing={3} sx={{ pt: 5, borderRadius: 2, position: 'relative' }}>
           <Box
             component="img"
@@ -101,7 +102,7 @@ export default function Nav({ openNav, onCloseNav }) {
             Upgrade to Pro
           </Button>
         </Stack>
-      </Box>
+      </Box> */}
     </Scrollbar>
   );
 
