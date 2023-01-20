@@ -32,6 +32,11 @@ const navConfig = [
     icon: icon('eva:file-text-fill'),
   },
   {
+    title: 'education',
+    path: '/dashboard/education',
+    icon: icon('eva:file-text-fill'),
+  },
+  {
     title: 'settings',
     path: '/dashboard/settings',
     icon: icon('ic_lock'),

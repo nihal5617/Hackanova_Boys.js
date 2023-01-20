@@ -35,3 +35,13 @@ export const deletePost = (id) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const addComment = (comment, id) => async (dispatch) => {
+    try{
+        console.log(comment, id);
+        const {data} = await api.addComment(comment, id);
+        // dispatch({type: COMMENT_POST, payload: data});
+    }catch(error){
+        console.log(error);
+    }
+}

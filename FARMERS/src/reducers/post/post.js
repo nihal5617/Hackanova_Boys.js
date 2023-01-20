@@ -44,6 +44,13 @@ export const postReducer = (state = initialState, action) => {
                 state: 'success',
                 error: null
             };
+        case actionTypes.COMMENT_POST:
+            return {
+                ...state,
+                posts: state.posts.map((post) => post._id === action.payload._id ? action.payload : post),
+                state: 'success',
+                error: null
+            };
         default:
             return state;
     }

@@ -11,10 +11,12 @@ import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import Community from './pages/Community/Community';
 import Weather from './pages/Weather';
-import Disease from './pages/Disease';
+import Disease from './pages/Disease/Disease';
 import Settings from './pages/Settings';
 import CropPrediction from './pages/CropPrediction';
 import Register from './pages/Register';
+import Post from './pages/Post'
+import Education from './pages/Education'
 
 // ----------------------------------------------------------------------
 const user = (JSON.parse(localStorage.getItem('profile')));
@@ -34,7 +36,9 @@ export default function Router() {
         { path: 'weather', element: <Weather /> },
         { path: 'disease', element: <Disease /> },
         { path: 'settings', element: <Settings /> },
-        { path: 'crop-prediction', element: <CropPrediction />}
+        { path: 'crop-prediction', element: <CropPrediction />},
+        { path: 'post/:id', element: <Post />},
+        { path: 'education', element: <Education />}
       ],
     },
     {

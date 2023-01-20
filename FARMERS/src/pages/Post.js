@@ -30,6 +30,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import { addComment } from '../actions/post/post';
 
 
 function a11yProps(index) {
@@ -43,74 +44,120 @@ const Post = () => {
 
   const {id} = useParams();
 
+  const [comment, setComment] = useState({
+    comment: '',
+  });
+
   console.log(id);
+
+  const posts = useSelector((state) => state.post.posts);
+  const post = posts.find((post) => post._id === id);
+  console.log(post);
 
   const dispatch = useDispatch();
 
-  const [image, setImage] = useState();
-  const [url, setUrl] = useState();
+  const handleChange = (e) => {
+    setComment({ ...comment, [e.target.name]: e.target.value });
+    };
 
-  const handleImageFile = (e) => {
-    setImage(e.target.files[0]);
-    setUrl(URL.createObjectURL(e.target.files[0]));
-  };
-  console.log(image);
+  const user = JSON.parse(localStorage.getItem('profile')).id;
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-      console.log(image)
-      const formData = new FormData();
-      formData.append("image", image);
-      // dispatch(diseaseControl(formData));
-      const {data} = await axios.post("http://127.0.0.1:8000/predict", formData);
-      console.log(data);
+        const commentData = {
+            comment: comment.comment,
+            id,
+        }
+        dispatch(addComment(commentData, user));
     }catch(err){
       console.log(err)
     }
   };
 
+  if(!post) return <div>Loading...</div>
   return (
     <>
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            
+            Post
           </Typography>
         </Stack>
-        <Card sx={{ p: 2 }}>
-            <form onSubmit={handleSubmit}>
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, mt: 2, mb: 2 }}>
-            <Box sx={{ width: '100%', mr: { sm: 1 } }}>
-              <Button
-                variant="outlined"
-                fullWidth
-                component="label"
-                style={{ height: '37px' }}
-                value={image}
-                onChange={(e) => handleImageFile(e)}
-              >
-                Upload Crop Image
-                <input hidden accept="image/*" type="file" />
-              </Button>
-            </Box>
-            <Box sx={{ width: '100%', ml: { sm: 1 } }}/>
-          </Box>
-          <Box sx={{ mt: 2 }}>
-            <Button variant="contained" color="primary" type="submit">
-              Submit
-            </Button>
-          </Box>
-          </form>
-          <CardActionArea>
-          <img
-            width="100%"
-            // className={classes.media}
-            src={url}
-            alt="Lance"
-          />
-        </CardActionArea>
-        </Card>
+        <Card sx={{ p: 2, maxWidth:'850px', m:'auto' }}>
+            <Box sx={{ display:'flex', flexDirection:{xs:'column', sm:'row'} }}>
+                <Box sx={{ display:'flex', flexDirection:'column', width:{xs:'100%'}, mr:1,  maxWidth:'350px' }}>
+                    <img src={post.image} alt="" height={250} style={{borderRadius:'5px',}}/>
+                </Box>
+                <Box sx={{display:'flex', flexDirection:'column', width:'100%', ml:{sm:1}, mt:{xs:2, sm:0} }}>
+                    <Box sx={{display:'flex', flexDirection:'row',alignItems:'center', mb:1}}>
+                        <Avatar sx={{mr:1}}>{post.name[0]}</Avatar>
+                            <Typography variant="h5" sx={{ml:1}}>
+                        {post.name}
+                    </Typography>
+                    </Box>
 
+                    <Typography variant="h3" gutterBottom>
+                        Title: {post.title}
+                    </Typography>
+                    <Typography variant="body1" gutterBottom sx={{textJustify:'center', textAlign:'justify'}}>
+                        Desc: {post.desc}
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        DateTime: {post.date.slice(0,10)} {post.date.slice(11,16)}
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        Likes: {post.likes.length}
+                    </Typography>
+                </Box>
+            </Box>
+        </Card>
+        <Card sx={{  p: 2, maxWidth:'850px', m:'auto', mt: 2 }}>
+            <form onSubmit={handleSubmit}>
+            <Box sx={{ display:'flex', flexDirection:'row', width:'100%', mt:{xs:2, sm:0} }}>
+                <TextField
+                    fullWidth
+                    label="Comment"
+                    name="comment"
+                    onChange={handleChange}
+                    required
+                    type="text"
+                    variant="outlined"
+                />
+                <Button
+                    color="primary"
+                    size="large"
+                    type="submit"
+                    variant="contained"
+                >
+                    Comment
+                </Button>
+            </Box>
+            </form>
+        </Card>
+        <Card sx={{  p: 2, maxWidth:'850px', m:'auto', mt:2 }}>
+            <Box sx={{ display:'flex', flexDirection:'column', width:'100%', ml:{sm:1}, mt:{xs:2, sm:0} }}>
+                <Typography variant="h7" gutterBottom>
+                    {post.comments.length} Comments
+                </Typography>
+                {post.comments ? post.comments.map((comment) => (
+                    <Card sx={{ mt:2, p: 2, maxWidth:'850px' }}>
+                        <Box sx={{ display:'flex', flexDirection:'row', width:'100%', ml:{sm:1}, mt:{xs:2, sm:0} }}>
+                            <Avatar sx={{mr:1}}>{comment.name[0]}</Avatar>
+                            <Typography variant="h5" sx={{ml:1}}>
+                                {comment.name}
+                            </Typography>
+                        </Box>
+                        <Typography variant="body1" gutterBottom sx={{textJustify:'center', textAlign:'justify'}}>
+                            {comment.comment}
+                        </Typography>
+                        <Typography variant="body1" gutterBottom>
+                            DateTime: {comment.date.slice(0,10)} {comment.date.slice(11,16)}
+                        </Typography>
+                    </Card>
+                )) : null}
+            </Box>
+        </Card>
       </Container>
     </>
   );

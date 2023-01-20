@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -55,6 +56,7 @@ export default function PostItem({post}) {
 
   return (
     <Card sx={{ width:'100%'}}>
+      <Link to={`/dashboard/post/${post._id}`} style={{textDecoration:'none', color:'black'}}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -79,6 +81,7 @@ export default function PostItem({post}) {
           {post.desc}
         </Typography>
       </CardContent>
+      </Link>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           {like ? <FavoriteIcon onClick={() => handleLike()} /> : <FavoriteBorderIcon onClick={() => handleLike()} />}
