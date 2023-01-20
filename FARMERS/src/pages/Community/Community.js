@@ -29,6 +29,7 @@ import {
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Post from './Post';
+import PostForm from './PostForm';
 
 const style = {
   position: 'absolute',
@@ -103,6 +104,9 @@ const Community = () => {
     },
   ];
 
+  const postsData = useSelector((state) => state.post.posts);
+  console.log(postsData);
+
   const handleChange = ({ currentTarget: input }) => {
     setConditions({
       ...conditions,
@@ -128,6 +132,9 @@ const Community = () => {
             Community Forum
           </Typography>
         </Stack>
+        <Card sx={{ p: 2 }}>
+      <PostForm />
+        </Card>
         <Post posts={posts} />
       </Container>
     </>

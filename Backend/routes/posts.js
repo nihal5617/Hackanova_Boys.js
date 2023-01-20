@@ -1,9 +1,10 @@
 import express from 'express';
 import { createPost, getAllPosts, getPostById, deletePost, likePost, unlikePost,addComment, deleteComment } from '../controllers/post.js';
+import imageUpload from '../middleware/multer.js';
 
 const router = express.Router();
 
-router.post('/addPost/:id', createPost);
+router.post('/addPost/:id', imageUpload.single("image"), createPost);
 router.get('/', getAllPosts);
 router.get('/:id', getPostById);
 router.delete('/:id', deletePost);
