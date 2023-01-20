@@ -18,6 +18,8 @@ const PostSchema = new Schema({
     },
   ],
   date: { type: Date, default: Date.now },
+  crop: { type: String },
+  location: { type: String },
 });
 
 export default mongoose.model('posts', PostSchema);
