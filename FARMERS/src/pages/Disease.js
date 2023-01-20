@@ -27,6 +27,7 @@ import {
   Modal,
   IconButton,
 } from '@mui/material';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { diseaseControl } from '../actions/diseaseControl/diseaseControl';
 
@@ -85,13 +86,15 @@ const Disease = () => {
     setImage(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     try{
       console.log(image)
       const formData = new FormData();
       formData.append("image", image);
-      dispatch(diseaseControl(formData));
+      // dispatch(diseaseControl(formData));
+      const {data} = await axios.post("http://127.0.0.1:8000/predict", formData);
+      alert("The Predicted disease is ", data.Prediction);
     }catch(err){
       console.log(err)
     }

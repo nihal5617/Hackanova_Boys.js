@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import axios from 'axios';
+import axios from 'axios';
 import {
   Box,
   Card,
@@ -94,10 +94,13 @@ const CropPrediction = () => {
     console.log(conditions);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     try{
       console.log(conditions)
+      const {data} = await axios.post('http://127.0.0.1:8000/recommend', conditions)
+      console.log(data)
+      alert("Crop Recommendation: ", data.crop)
     }catch(err){
       console.log(err)
     }
@@ -108,7 +111,7 @@ const CropPrediction = () => {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Crop Prediction
+            Crop Recommendation
           </Typography>
         </Stack>
         <Card sx={{ p: 2 }}>
