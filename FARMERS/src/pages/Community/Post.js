@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import {Box} from '@mui/material'
+import {Box, Card} from '@mui/material'
 import { getPosts } from "../../actions/post/post";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
@@ -13,19 +13,18 @@ const Posts = (props) => {
 
   if(!posts) return <div>Loading...</div>
   return (
+    
     <Box>
+      <Card sx={{ p: 2 }}>
       <PostForm />
-      <div className="posts">
+        </Card>
+      <Card sx={{ p: 2 , mt: 2}}>
         {posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
-      </div>
+      </Card>
     </Box>
   );
 };
 
 export default Posts
-
-// const mapStateToProps = (state) => ({ post: state.post });
-
-// export default connect(mapStateToProps, { getPosts })(Posts);
