@@ -4,6 +4,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+import authRoutes from "./routes/users.js";
+
 dotenv.config();
 
 const app = express();
@@ -13,6 +15,7 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
 //import routes here
+app.use('/users', authRoutes);
 
 //enter mongo url here
 const CONNECTION_URL = process.env.CONN_URL;
