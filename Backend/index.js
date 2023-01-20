@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 import authRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
+import videoRoutes from "./routes/videocall.js";
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 //import routes here
 app.use('/users', authRoutes);
 app.use('/posts', postRoutes);
+app.use('/videocall', videoRoutes);
 
 //enter mongo url here
 const CONNECTION_URL = process.env.CONN_URL;
