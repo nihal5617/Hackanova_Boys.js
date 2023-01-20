@@ -100,7 +100,6 @@ const CropPrediction = () => {
       console.log(conditions)
       const {data} = await axios.post('http://127.0.0.1:8000/recommend', conditions)
       console.log(data)
-      alert("Crop Recommendation: ", data.crop)
     }catch(err){
       console.log(err)
     }

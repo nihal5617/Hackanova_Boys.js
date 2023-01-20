@@ -94,7 +94,7 @@ const Disease = () => {
       formData.append("image", image);
       // dispatch(diseaseControl(formData));
       const {data} = await axios.post("http://127.0.0.1:8000/predict", formData);
-      alert("The Predicted disease is ", data.Prediction);
+      console.log(data);
     }catch(err){
       console.log(err)
     }
