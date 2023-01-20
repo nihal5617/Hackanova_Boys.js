@@ -12,17 +12,11 @@ const Posts = (props) => {
 
   if(!posts) return <div>Loading...</div>
   return (
-    
-    <Box>
-      <Card sx={{ p: 2 }}>
-      <PostForm />
-        </Card>
       <Card sx={{ p: 2 , mt: 2}}>
         {posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
       </Card>
-    </Box>
   );
 };
 

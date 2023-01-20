@@ -2,6 +2,13 @@ import {ADD_POST, GET_POST, GET_POSTS, LIKE_POST, UNLIKE_POST, DELETE_POST, COMM
 import * as api from '../../api/index'
 
 export const getPosts = () => async(dispatch) => {
+    try{
+        const {data} = await api.getPosts();
+        console.log(data);
+        dispatch({type: GET_POSTS, payload: data});
+    }catch(error){
+        console.log(error);
+    }
 }
 
 export const addPost = (postInfo, id) => async(dispatch) => {

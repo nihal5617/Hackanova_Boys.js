@@ -17,3 +17,4 @@ export const signup = (userInfo) => api.post(`/users/signup`, userInfo);
 export const signin = (userInfo) => api.post(`/users/signin`, userInfo);
 
 export const addPost = (postInfo, id) => api.post(`/posts/addPost/${id}`, postInfo);
+export const getPosts = () => api.get(`/posts/`);
