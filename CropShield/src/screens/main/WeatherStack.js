@@ -1,7 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import React from 'react';
-Weather
+Weather;
 import styles from '../../styles/styles';
 import Weather from './screens/Weather';
 
@@ -24,7 +24,9 @@ export default function WeatherStack({navigation, route}) {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Weather" component={Weather} />
+      <Stack.Screen name="Weather" component={Weather} options={{
+        headerShown: false,
+      }} />
     </Stack.Navigator>
   );
 }
