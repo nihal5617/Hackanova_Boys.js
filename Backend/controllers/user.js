@@ -10,8 +10,8 @@ export const signup = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
-    const { name, username, password,image } = req.body;
+    console.log(req)
+    const { name, username, password,image, phone, location  } = req.body;
 
     try {
         let user = await User.findOne({ username });
@@ -23,6 +23,8 @@ export const signup = async (req, res) => {
             username,
             password,
             image,
+            phone,
+            location
         });
 
         const salt = await bcrypt.genSalt();
@@ -35,15 +37,14 @@ export const signup = async (req, res) => {
                 id: user.id,
             },
         };
-        jwt.sign(
-            payload,
-            config.get('jwtSecret'),
-            { expiresIn: 360000 }, // Change to 3600 during production
-            (err, token) => {
-                if (err) throw err;
-                res.json({ token });
-            }
-        );
+        const token = jwt.sign({id: admin.id}, process.env.SECRET, {
+            expiresIn: 86400 // 24 hours
+        });
+        res.status(200).send({
+            id: user.id,
+            username: user.username,
+            token: token
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -75,6 +76,8 @@ export const signin = async (req, res) => {
         });
         res.status(200).send({
             id: user.id,
+            username: user.username,
+            token: token
         });
     }catch(err){
         res.status(500).send({message: err.message});
