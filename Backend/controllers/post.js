@@ -12,10 +12,11 @@ export const createPost = async (req, res) => {
         const user = await User.findById(req.user.id).select('-password');
 
         const newPost = new Post({
-            text: req.body.text,
+            title: req.body.title,
             name: user.name,
-            avatar: user.avatar,
+            // image: req.body.image,
             user: req.user.id,
+            desc: req.body.desc,
         });
 
         const post = await newPost.save();
