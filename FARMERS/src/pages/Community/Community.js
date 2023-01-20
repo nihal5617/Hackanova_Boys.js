@@ -78,51 +78,7 @@ function a11yProps(index) {
 }
 
 const Community = () => {
-  const [conditions, setConditions] = useState({
-    n: '',
-    p: '',
-    k: '',
-    temp: '',
-    hum: '',
-    ph: '',
-    rain: '',
-  });
-
-  // _id, text, name, avatar, user, likes, comments, date4
-
-  const posts = [
-    {
-      id: 1,
-      user: 1,
-      title: 'Title 1',
-      desc: 'Desc 1',
-      name: 'Test Wadke',
-      image: 'https://avatars.githubusercontent.com/pratikwadke02?s=200',
-      comments: [],
-      likes: [],
-      date: '2023-01-20T05:11:48.447Z',
-    },
-  ];
-
-  const postsData = useSelector((state) => state.post.posts);
-  console.log(postsData);
-
-  const handleChange = ({ currentTarget: input }) => {
-    setConditions({
-      ...conditions,
-      [input.name]: input.value,
-    });
-    console.log(conditions);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    try {
-      console.log(conditions);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const posts = useSelector((state) => state.post.posts);
 
   return (
     <>
@@ -133,7 +89,7 @@ const Community = () => {
           </Typography>
         </Stack>
         <Card sx={{ p: 2 }}>
-      <PostForm />
+          <PostForm />
         </Card>
         <Post posts={posts} />
       </Container>

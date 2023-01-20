@@ -18,3 +18,4 @@ export const signin = (userInfo) => api.post(`/users/signin`, userInfo);
 
 export const addPost = (postInfo, id) => api.post(`/posts/addPost/${id}`, postInfo);
 export const getPosts = () => api.get(`/posts/`);
+export const deletePost = (id) => api.delete(`/posts/${id}`);
