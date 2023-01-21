@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, MenuItem, Stack, IconButton, Popover, Button } from '@mui/material';
@@ -20,6 +20,21 @@ const LANGS = [
 // ----------------------------------------------------------------------
 
 export default function LanguagePopover() {
+  const [video, setVideo] = useState(null);
+
+  useEffect(() => {
+    const getVideoLink = async () => {
+      try {
+        const {data} = await axios.get("http://localhost:5000/videocall");
+        setVideo(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getVideoLink();
+  }, [setVideo]);
+
   const [open, setOpen] = useState(null);
 
   const handleOpen = (event) => {
@@ -30,15 +45,13 @@ export default function LanguagePopover() {
     setOpen(null);
   };
   
-  const handleAssistance = async() => {
-    try{
-      const {data} = await axios.get('http://localhost:5000/videocall');
-      console.log(data.link);
-      window.open(data.link, '_blank', 'noreferrer');
-    }catch(error){
-      console.log(error)
-    }
-  }
+  // const handleAssistance = async() => {
+  //   try{
+
+  //   }catch(error){
+  //     console.log(error)
+  //   }
+  // }
 
   const handleTour = () => {
   }
@@ -93,9 +106,16 @@ export default function LanguagePopover() {
           <MenuItem onClick={() => handleTour()}>
               Tour
             </MenuItem>
-            <MenuItem onClick={() => handleAssistance()}>
+            {video ? 
+              <MenuItem>
+              <a href={`${video.link}`} target="_blank" rel='noreferrer' style={{textDecoration:'none', color:'black'}}>
+              Assistance
+            </a>
+              </MenuItem>
+            : <MenuItem>
               Assistance
             </MenuItem>
+}
         </Stack>
       </Popover>
     </>
