@@ -16,7 +16,7 @@ const list = [
   },
   {
     name: 'My Subscription Plan',
-    screen: 'MySubscriptions',
+    screen: 'CurrentPlan',
     icon: 'credit-card',
   },
 ];
