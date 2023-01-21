@@ -18,6 +18,7 @@ export default function Header({
   endRippleText,
   endRippleIconStyle = {},
   endRippleSize,
+  endRippleTextCLick = () => {},
 }) {
   const close = () => {
     navigation.goBack(null);
@@ -63,6 +64,18 @@ export default function Header({
           </View>
         )}
       </View>
+      {endRippleText && (
+        <Ripple onPress={() => endRippleTextCLick()} style={{
+          height: 45,
+          width: "45%",
+          justifyContent: 'center',
+          alignItems: 'flex-end',
+        }}
+        rippleSize={'25%'}
+        >
+          <Text style={styles.endRippleText}>{endRippleText}</Text>
+        </Ripple>
+      )}
       {endRippleIcon && (
         <Ripple
           style={[styles.endIcon, endRippleIconStyle]}
@@ -73,11 +86,6 @@ export default function Header({
             endRippleSize ? endRippleSize : 16,
             colors.WHITE,
           )}
-        </Ripple>
-      )}
-      {endRippleText && (
-        <Ripple onPress={() => endRippleClick()}>
-          <Text style={styles.endRippleText}>{endRippleText}</Text>
         </Ripple>
       )}
     </View>
@@ -99,7 +107,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     marginRight: 10,
-    marginLeft:-10,
+    marginLeft: -10,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -131,9 +139,9 @@ const styles = StyleSheet.create({
   },
 
   endRippleText: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: colors.PRIMARY,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    color: colors.BLACK,
     fontSize: fonts._13,
     fontFamily: fonts.FONT_FAMILY.REGULAR,
   },

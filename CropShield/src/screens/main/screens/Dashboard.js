@@ -20,6 +20,8 @@ import messaging from '@react-native-firebase/messaging';
 import {Dropdown} from 'react-native-element-dropdown';
 import {BarChart} from 'react-native-chart-kit';
 import setOfStrings from '../../../utility/screenStrings';
+import Video from 'react-native-video';
+import VideoPlayer from 'react-native-video-controls';
 var PushNotification = require('react-native-push-notification');
 
 const recentPrecautionData = [
@@ -42,16 +44,20 @@ const recentPrecautionData = [
 ];
 
 export default function Dashboard({navigation}) {
+
+  const [checkVideo, setCheckVideo] = React.useState(false);
   useEffect(() => {
     navigation.setOptions({
       header: () => (
         <Header
-          title={setOfStrings.hey+' '+'Username'}
+          title={setOfStrings.hey + ' ' + 'Username'}
           showBackButton={false}
           navigation={navigation}
           endRippleIcon={'phone-call'}
           endRippleIconType={constants.IC_FEATHER}
           endRippleClick={() => openCall()}
+          endRippleText={setOfStrings.tutorial}
+          endRippleTextCLick={() => openTutorial()}
         />
       ),
     });
@@ -100,6 +106,11 @@ export default function Dashboard({navigation}) {
     requestUserPermission();
     setUpFirebase();
   }, []);
+
+  const openTutorial = () => {
+    setCheckVideo(!checkVideo);
+  };
+
   const requestUserPermission = async () => {
     const authorizationStatus = await messaging().requestPermission();
 
@@ -210,8 +221,8 @@ export default function Dashboard({navigation}) {
             </Text>
           </View>
           <Text style={internalStyles.crop}>{item.crop}</Text>
-          <Text style={{color:colors.GREY}}>{item.disease}</Text>
-          <Text style={{color:colors.GREY}}>{item.precautions}</Text>
+          <Text style={{color: colors.GREY}}>{item.disease}</Text>
+          <Text style={{color: colors.GREY}}>{item.precautions}</Text>
         </View>
       </View>
     );
@@ -242,6 +253,16 @@ export default function Dashboard({navigation}) {
       style={[styles.styleFull, {paddingHorizontal: 15, paddingTop: 10}]}
       showsVerticalScrollIndicator={false}>
       <View>
+        {checkVideo && (
+          <View style={internalStyles.video}>
+            <VideoPlayer
+              controls={true}
+              source={require('../../../assets/video/check.mp4')}
+              style={internalStyles.videoplayer}
+              resizeMode="cover"
+            />
+          </View>
+        )}
         <View style={internalStyles.home}>
           <Text style={internalStyles.header}>{setOfStrings.overview}</Text>
         </View>
@@ -284,7 +305,9 @@ export default function Dashboard({navigation}) {
       </View>
       <View style={internalStyles.earningAndSales}>
         <View style={internalStyles.home}>
-          <Text style={internalStyles.header}>{setOfStrings.productionDetails}</Text>
+          <Text style={internalStyles.header}>
+            {setOfStrings.productionDetails}
+          </Text>
         </View>
         <View style={{flex: 1, padding: 5, alignItems: 'center'}}>
           <BarChart
@@ -295,7 +318,14 @@ export default function Dashboard({navigation}) {
             }}
             height={180}
             data={{
-              labels: [setOfStrings.jan, setOfStrings.feb, setOfStrings.mar, setOfStrings.apr, setOfStrings.may, setOfStrings.jun],
+              labels: [
+                setOfStrings.jan,
+                setOfStrings.feb,
+                setOfStrings.mar,
+                setOfStrings.apr,
+                setOfStrings.may,
+                setOfStrings.jun,
+              ],
               datasets: [
                 {
                   data: [20, 45, 28, 80, 99, 43],
@@ -331,20 +361,36 @@ export default function Dashboard({navigation}) {
       <View styles={internalStyles.recentPrecaution}>
         <View
           style={[internalStyles.home, {paddingVertical: 0, paddingTop: 15}]}>
-          <Text style={internalStyles.header}>{setOfStrings.recentPrecautions}</Text>
+          <Text style={internalStyles.header}>
+            {setOfStrings.recentPrecautions}
+          </Text>
         </View>
-          <FlatList
-            data={recentPrecautionData}
-            renderItem={({item}) => renderRecentPrecautions(item)}
-            keyExtractor={item => item.id}
-            style={{paddingBottom: 10}}
-          />
+        <FlatList
+          data={recentPrecautionData}
+          renderItem={({item}) => renderRecentPrecautions(item)}
+          keyExtractor={item => item.id}
+          style={{paddingBottom: 10}}
+        />
       </View>
     </ScrollView>
   );
 }
 
 const internalStyles = StyleSheet.create({
+  video: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+    backgroundColor: colors.WHITE,
+    alignSelf: 'center',
+    elevation: 1,
+    marginBottom: 10,
+  },
+  videoplayer: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
+  },
   header: {
     color: colors.BLACK,
     fontWeight: '700',

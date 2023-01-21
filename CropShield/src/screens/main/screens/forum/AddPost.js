@@ -21,7 +21,7 @@ const apiKey = {
 const accountInfo = {
   name: "Farmer's Name",
   mobile: '1234567890',
-  email: 'abc@gmail.com',
+  email: 'username',
   image: require('../../../../assets/images/logo.jpg'),
 };
 

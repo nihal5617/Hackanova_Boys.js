@@ -37,6 +37,11 @@ const navConfig = [
     icon: icon('eva:file-text-fill'),
   },
   {
+    title: 'government schemes',
+    path: '/dashboard/government',
+    icon: icon('eva:file-text-fill'),
+  },
+  {
     title: 'settings',
     path: '/dashboard/settings',
     icon: icon('ic_lock'),
