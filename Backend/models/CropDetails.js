@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const month = mongoose.Schema({
-    jan: {}
-})
-
 const CropDetailSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'users' },
   totalCrops: {type: String},
@@ -12,10 +8,19 @@ const CropDetailSchema = new Schema({
   totalDeceased: {type: String},
   totalProduction: {type: String},
   months: {
-    
+    jan: {type: String},
+    feb: {type: String},
+    mar: {type: String},
+    apr: {type: String},
+    may: {type: String},
+    jun: {type: String},
+    jul: {type: String},
+    aug: {type: String},
+    sep: {type: String},
+    oct: {type: String},
+    nov: {type: String},
+    dec: {type: String},
   }
 });
 
-export default mongoose.model('posts', PostSchema);
-
-[{src:"url"},{src:"url"},{},]
+export default mongoose.model('cropDetails', CropDetailSchema);
