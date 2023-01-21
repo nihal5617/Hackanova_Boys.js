@@ -76,3 +76,15 @@ export const getAllUsers = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
+
+//update token
+export const updateCoins = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { coins } = req.body;
+        const updatedUser = await User.findByIdAndUpdate (id, { coins }, { new: true });
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
