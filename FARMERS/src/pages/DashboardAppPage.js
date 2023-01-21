@@ -37,7 +37,7 @@ export default function DashboardAppPage() {
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3} sx={{backgroundColor:'#fff'}}>
             <img src={images.icon1} alt="icon1" />
             <Typography variant="h6">
               Crop Disease Detection
