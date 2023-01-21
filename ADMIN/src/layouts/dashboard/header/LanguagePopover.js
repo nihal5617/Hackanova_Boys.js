@@ -41,6 +41,7 @@ export default function LanguagePopover() {
   }
 
   const handleTour = () => {
+    window.open('https://www.youtube.com/watch?v=Q8TXgCzxEnw', '_blank', 'noreferrer');
   }
 
   return (
