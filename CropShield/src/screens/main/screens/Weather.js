@@ -231,8 +231,7 @@ export default function Weather() {
             fontWeight: 'bold',
             textAlign: 'justify',
           }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Proper soil preparation: Ensure the soil is well-drained and has the appropriate pH level for the type of crop you are growing.
         </Text>
       </View>
       <View
@@ -255,8 +254,30 @@ export default function Weather() {
             fontWeight: 'bold',
             textAlign: 'justify',
           }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Fertilization: Use the appropriate type and amount of fertilizer for your crop, and follow the recommended application schedule.
+        </Text>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          marginLeft: 10,
+          backgroundColor: colors.WHITE,
+          elevation: 2,
+          padding: 5,
+          paddingHorizontal: 10,
+          margin: 10,
+          borderRadius: 5,
+        }}>
+        <Text
+          style={{
+            color: '#000000',
+            fontSize: 16,
+            fontWeight: 'bold',
+            textAlign: 'justify',
+          }}>
+          Proper storage : to maintain the quality and prolong the shelf life of your crops, store them properly to prevent spoilage.
         </Text>
       </View>
     </ScrollView>

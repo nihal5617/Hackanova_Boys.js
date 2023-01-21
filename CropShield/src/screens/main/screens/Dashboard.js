@@ -257,9 +257,9 @@ export default function Dashboard({navigation}) {
           <View style={internalStyles.video}>
             <VideoPlayer
               controls={true}
-              source={require('../../../assets/video/check.mp4')}
+              source={require('../../../assets/video/Tutorial.mp4')}
               style={internalStyles.videoplayer}
-              resizeMode="cover"
+              resizeMode="contain"
             />
           </View>
         )}
@@ -379,10 +379,12 @@ export default function Dashboard({navigation}) {
 const internalStyles = StyleSheet.create({
   video: {
     width: '100%',
-    height: 200,
+    height: 400,
     borderRadius: 10,
     backgroundColor: colors.WHITE,
     alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
     elevation: 1,
     marginBottom: 10,
   },
