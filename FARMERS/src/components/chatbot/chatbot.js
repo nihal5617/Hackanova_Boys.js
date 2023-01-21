@@ -6,8 +6,8 @@ import chatbotIcon from '../../assets/chatbox-icon.svg';
 const Chatbot = () => {
   const [show, setShow] = React.useState(false);
   const [message, setMessage] = React.useState('');
-  const [messages, setMessages] = React.useState([]);
-  const [chatText, setChatText] = React.useState([]);
+  const messages = [];
+  const [chatText, setChatText] = React.useState("");
 
   const toggle = () => {
     setShow(!show);
@@ -21,12 +21,14 @@ const Chatbot = () => {
       if (message === '') {
         return;
       }
-
+      console.log(message);
+      const msg1 = message
+      messages.push({name:"User", message:msg1});
       const  {data}  = await axios.post('http://127.0.0.1:8000/chatbot', { data: message });
       console.log(data);
       const msg2 = {name:"Bot", message:data.answer};
-        setMessages([...messages, msg2]);
-        updateChatText();
+      messages.push(msg2);
+      updateChatText();
     } catch (err) {
       console.log(err);
     }
@@ -39,14 +41,15 @@ const Chatbot = () => {
 
   const updateChatText = () => {
     let html = ""
-    messages.slice().reverse().forEach((item,index) => {
+    console.log(messages)
+    messages.slice().forEach((item,index) => {
         if (item.name === "Bot") {
-            html += `<div class="chatbox__message chatbox__message--bot">${item.message}</div>`
+            html += `<div class="messages__item messages__item--visitor">${item.message}</div>`
         } else {
-            html += `<div class="chatbox__message chatbox__message--user">${item.message}</div>`
+            html += `<div class="messages__item messages__item--operator">${item.message}</div>`
         }
         console.log(html);
-        setChatText([...chatText,html]);
+        setChatText(html);
     })
     console.log(html);
 };
@@ -65,7 +68,7 @@ const Chatbot = () => {
             </div>
           </div>
           <div className="chatbox__messages">
-            <div>{chatText}</div>
+            <div dangerouslySetInnerHTML={{__html:chatText}}/>
           </div>
           <div className="chatbox__footer">
             <input type="text" placeholder="Write a message..." onChange={handleChange} />
