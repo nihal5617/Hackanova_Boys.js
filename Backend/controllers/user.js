@@ -1,15 +1,9 @@
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import {check,validationResult } from 'express-validator';
 
 
 export const signup = async (req, res) => {
-    // const errors = validationResult(req);
-    // console.log(errors);
-    // if (!errors.isEmpty()) {
-    //     return res.status(400).json({ errors: errors.array() });
-    // }
     console.log(req.body)
     
     try {
@@ -30,12 +24,6 @@ export const signup = async (req, res) => {
         user.password = await bcrypt.hash(password, salt);
 
         await user.save();
-
-        // const payload = {
-        //     user: {
-        //         id: user.id,
-        //     },
-        // };
         const token = jwt.sign({id: user.id}, process.env.SECRET, {
             expiresIn: 86400 // 24 hours
         });
@@ -52,11 +40,7 @@ export const signup = async (req, res) => {
 
 export const signin = async (req, res) => {
     try{
-        const user = await User.findOne({
-            where: {
-                email: req.body.email
-            }
-        });
+        const user = await User.findOne({username : req.body.username});
         if(!user){
             return res.status(404).send({message: "user not found."});
         }
@@ -80,5 +64,15 @@ export const signin = async (req, res) => {
         });
     }catch(err){
         res.status(500).send({message: err.message});
+    }
+}
+
+//get all users
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
     }
 }
