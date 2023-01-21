@@ -67,7 +67,7 @@ export default function Nav({ openNav, onCloseNav }) {
 
             <Box sx={{ ml: 2 }}>
               <Typography variant="h5" sx={{ color: 'text.primary' }}>
-                FARMERS PANEL
+                ADMIN PANEL
               </Typography>
 
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
