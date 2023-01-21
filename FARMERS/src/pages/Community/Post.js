@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import {Box, Card, Grid} from '@mui/material'
 import {Link} from "react-router-dom"
 import { getPosts } from "../../actions/post/post";
-import PostItem from "./PostItem";
+import PostItem from "../Government/Scheme";
 import PostForm from "./PostForm";
 
 const Posts = (props) => {
