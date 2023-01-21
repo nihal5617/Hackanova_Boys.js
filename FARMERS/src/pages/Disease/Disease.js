@@ -122,7 +122,7 @@ const Disease = () => {
                 <img width="100%" src={url} alt="Accepted file types: jpg, png, jpeg." style={{borderRadius:'5px'}}/>
               </Box>
               <Box sx={{ width: '100%', ml: { sm: 1 }, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }} >
-              <Box sx={{ width: '100%' }}>
+              <Box sx={{ width: '100%', maxWidth:'330px' }}>
                 <Button
                   variant="outlined"
                   fullWidth
@@ -135,7 +135,7 @@ const Disease = () => {
                   <input hidden accept="image/*" type="file" />
                 </Button>
               </Box>
-              <Box sx={{ width: '100%', mt:2 }}>
+              <Box sx={{ width: '100%', mt:2, maxWidth:'330px' }}>
                 <Button variant="contained" fullWidth type="submit" style={{height:'40px'}}>
                   Predict
                 </Button>

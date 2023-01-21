@@ -12,7 +12,7 @@ export default function GovCard({data}) {
   console.log(data)
 
   return (
-    <Card sx={{ width:'100%'}}>
+    <Card sx={{ width:'100%', maxHeight:'400px', height:'100%'}}>
       <a href={`${data.href}`} target="_blank" rel='noreferrer' style={{textDecoration:'none', color:'black'}}>
       <CardContent>
       <Typography variant="h3" color="text.secondary">
@@ -28,7 +28,7 @@ export default function GovCard({data}) {
       />
       <CardContent>
       
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" sx={{textJustify:"center", textAlign:'justify'}}>
           {data.text}
         </Typography>
       </CardContent>
