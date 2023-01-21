@@ -19,6 +19,9 @@ import Post from './pages/Post'
 import Education from './pages/Education'
 import Government from './pages/Government/Government'
 import Tour from './pages/Tour'
+import Farmers from './pages/Farmers';
+import Scientists from './pages/Scientists';
+import Posts from './pages/Posts';
 
 // ----------------------------------------------------------------------
 const user = (JSON.parse(localStorage.getItem('profile')));
@@ -42,7 +45,10 @@ export default function Router() {
         { path: 'post/:id', element: <Post />},
         { path: 'education', element: <Education />},
         { path: 'government', element: <Government />},
-        { path: 'tour', element: <Tour />}
+        { path: 'tour', element: <Tour />},
+        { path: 'farmers', element: <Farmers />},
+        { path: 'scientists', element: <Scientists />},
+        { path: 'posts', element: <Posts />},
       ],
     },
     {

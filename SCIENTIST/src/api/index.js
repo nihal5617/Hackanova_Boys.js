@@ -20,3 +20,5 @@ export const addPost = (postInfo, id) => api.post(`/posts/addPost/${id}`, postIn
 export const getPosts = () => api.get(`/posts/`);
 export const deletePost = (id) => api.delete(`/posts/${id}`);
 export const addComment = (comment, id) => api.post(`/posts/comment/${id}`, comment);
+
+export const getFarmers = () => api.get(`/users/getAllUsers`);

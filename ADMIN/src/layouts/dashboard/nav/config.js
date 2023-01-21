@@ -12,35 +12,50 @@ const navConfig = [
     icon: icon('ic_analytics'),
   },
   {
-    title: 'community',
-    path: '/dashboard/community',
-    icon: icon('community'),
-  },
-  {
-    title: 'weather',
-    path: '/dashboard/weather',
-    icon: icon('weather'),
-  },
-  {
-    title: 'disease prediction',
-    path: '/dashboard/disease',
-    icon: icon('magnifying-glass'),
-  },
-  {
-    title: 'crop prediction',
-    path: '/dashboard/crop-prediction',
+    title: 'posts details',
+    path: '/dashboard/posts',
     icon: icon('plants'),
   },
   {
-    title: 'education',
-    path: '/dashboard/education',
-    icon: icon('education'),
+    title: 'Farmer Details',
+    path: '/dashboard/farmers',
+    icon: icon('ic_user'),
   },
   {
-    title: 'government schemes',
-    path: '/dashboard/government',
-    icon: icon('discount'),
-  },
+    title: 'scientist details',
+    path: '/dashboard/scientists',
+    icon: icon('ic_user'),
+  }
+  // {
+  //   title: 'community',
+  //   path: '/dashboard/community',
+  //   icon: icon('community'),
+  // },
+  // {
+  //   title: 'weather',
+  //   path: '/dashboard/weather',
+  //   icon: icon('weather'),
+  // },
+  // {
+  //   title: 'disease prediction',
+  //   path: '/dashboard/disease',
+  //   icon: icon('magnifying-glass'),
+  // },
+  // {
+  //   title: 'crop prediction',
+  //   path: '/dashboard/crop-prediction',
+  //   icon: icon('plants'),
+  // },
+  // {
+  //   title: 'education',
+  //   path: '/dashboard/education',
+  //   icon: icon('education'),
+  // },
+  // {
+  //   title: 'government schemes',
+  //   path: '/dashboard/government',
+  //   icon: icon('discount'),
+  // },
   // {
   //   title: 'settings',
   //   path: '/dashboard/settings',
