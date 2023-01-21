@@ -22,9 +22,9 @@ const navConfig = [
     icon: icon('weather'),
   },
   {
-    title: 'disease control',
+    title: 'disease prediction',
     path: '/dashboard/disease',
-    icon: icon('eva:file-text-fill'),
+    icon: icon('magnifying-glass'),
   },
   {
     title: 'crop prediction',
@@ -39,7 +39,7 @@ const navConfig = [
   {
     title: 'government schemes',
     path: '/dashboard/government',
-    icon: icon('eva:file-text-fill'),
+    icon: icon('discount'),
   },
   {
     title: 'settings',
