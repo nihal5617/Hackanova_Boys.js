@@ -167,3 +167,45 @@ export const deleteComment = async (req, res) => {
     return res.status(500).send("Server Error");
   }
 };
+
+export const filterPostByLocation = async (req, res) => {
+  try {
+    const posts = await Post.find({ location: req.params.location });
+    res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+
+export const filterPostByCrop = async (req, res) => {
+  try {
+    const posts = await Post.find({ crop: req.params.crop });
+    res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+}
+
+//list of unique crops
+export const getCrops = async (req, res) => {
+  try {
+    const crops = await Post.distinct("crop");
+    res.json(crops);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+
+//list of unique locations
+export const getLocations = async (req, res) => {
+  try {
+    const locations = await Post.distinct("location");
+    res.json(locations);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+}
