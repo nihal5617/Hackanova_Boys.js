@@ -55,7 +55,7 @@ export default function PostItem({post}) {
   };
 
   return (
-    <Card sx={{ width:'100%'}}>
+    <Card sx={{ width:'100%', maxHeight:'500px', height:'100%'}}>
       <Link to={`/dashboard/post/${post._id}`} style={{textDecoration:'none', color:'black'}}>
       <CardHeader
         avatar={
@@ -77,18 +77,18 @@ export default function PostItem({post}) {
       <Typography variant="h3" color="text.secondary">
           {post.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="h5" color="text.disabled">
           {post.desc}
         </Typography>
       </CardContent>
       </Link>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
-          {like ? <FavoriteIcon onClick={() => handleLike()} /> : <FavoriteBorderIcon onClick={() => handleLike()} />}
+          {like ? <FavoriteIcon onClick={() => handleLike()} fontSize="large" /> : <FavoriteBorderIcon onClick={() => handleLike()} fontSize="large" />}
         </IconButton>
         <IconButton aria-label="share">
-          <DeleteIcon onClick={() => handleDelete(post._id)} />
-        </IconButton>
+          <DeleteIcon onClick={() => handleDelete(post._id)} fontSize="large" />
+        </IconButton> 
       </CardActions>
     </Card>
   );
