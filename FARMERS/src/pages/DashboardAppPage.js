@@ -4,6 +4,7 @@ import { faker } from '@faker-js/faker';
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // components
+import Chatbot from '../components/chatbot/chatbot';
 import Iconify from '../components/iconify';
 // sections
 import {
@@ -226,6 +227,7 @@ export default function DashboardAppPage() {
             />
           </Grid> */}
         </Grid>
+        <Chatbot/>
       </Container>
     </>
   );
