@@ -30,7 +30,7 @@ import papaya from '../assets/papaya.jpeg';
 import pigeonpeas from '../assets/pigeonpeas.jpg';
 import pomegranate from '../assets/pomegranate.jpeg';
 import rice from '../assets/rice.jpg';
-import watermelon from '../assets/watermelon.jpg';
+import watermelon from '../assets/watermelon.png';
 
 export default {
     farmarea,
