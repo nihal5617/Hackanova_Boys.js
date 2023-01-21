@@ -1,25 +1,19 @@
 import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
-import { Box, MenuItem, Stack, IconButton, Popover } from '@mui/material';
+import { Box, MenuItem, Stack, IconButton, Popover, Button } from '@mui/material';
+import axios from 'axios';
 
 // ----------------------------------------------------------------------
 
 const LANGS = [
   {
     value: 'en',
-    label: 'English',
-    icon: '/assets/icons/ic_flag_en.svg',
+    label: 'Tour',
   },
   {
     value: 'de',
-    label: 'German',
-    icon: '/assets/icons/ic_flag_de.svg',
-  },
-  {
-    value: 'fr',
-    label: 'French',
-    icon: '/assets/icons/ic_flag_fr.svg',
+    label: 'Assistance',
   },
 ];
 
@@ -35,22 +29,40 @@ export default function LanguagePopover() {
   const handleClose = () => {
     setOpen(null);
   };
+  
+  const handleAssistance = async() => {
+    try{
+      const {data} = await axios.get('http://localhost:5000/videocall');
+      console.log(data.link);
+      window.open(data.link, '_blank', 'noreferrer');
+    }catch(error){
+      console.log(error)
+    }
+  }
+
+  const handleTour = () => {
+  }
 
   return (
     <>
-      <IconButton
+      <Button
         onClick={handleOpen}
+        // sx={{
+        //   padding: 0,
+        //   width: 44,
+        //   height: 44,
+        //   ...(open && {
+        //     bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.focusOpacity),
+        //   }),
+        // }}
+        variant="contained"
         sx={{
-          padding: 0,
-          width: 44,
-          height: 44,
-          ...(open && {
-            bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.action.focusOpacity),
-          }),
+          backgroundColor: '#fff',
+          color: 'primary.main',
         }}
-      >
-        <img src={LANGS[0].icon} alt={LANGS[0].label} />
-      </IconButton>
+      > 
+      HELP
+      </Button>
 
       <Popover
         open={Boolean(open)}
@@ -73,13 +85,17 @@ export default function LanguagePopover() {
         }}
       >
         <Stack spacing={0.75}>
-          {LANGS.map((option) => (
+          {/* {LANGS.map((option) => (
             <MenuItem key={option.value} selected={option.value === LANGS[0].value} onClick={() => handleClose()}>
-              <Box component="img" alt={option.label} src={option.icon} sx={{ width: 28, mr: 2 }} />
-
               {option.label}
             </MenuItem>
-          ))}
+          ))} */}
+          <MenuItem onClick={() => handleTour()}>
+              Tour
+            </MenuItem>
+            <MenuItem onClick={() => handleAssistance()}>
+              Assistance
+            </MenuItem>
         </Stack>
       </Popover>
     </>

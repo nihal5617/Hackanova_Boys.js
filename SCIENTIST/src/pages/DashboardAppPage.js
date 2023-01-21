@@ -2,8 +2,9 @@ import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Grid, Container, Typography } from '@mui/material';
+import { Grid, Container, Typography, Card } from '@mui/material';
 // components
+import Chatbot from '../components/chatbot/chatbot';
 import Iconify from '../components/iconify';
 // sections
 import {
@@ -31,35 +32,43 @@ export default function DashboardAppPage() {
       </Helmet>
 
       <Container maxWidth="xl">
-        <Typography variant="h4" sx={{ mb: 5 }}>
+        <Typography variant="h3" sx={{ mb: 5, color:'#fff' }}>
           Hi, Welcome back
         </Typography>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3} sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+            <Card sx={{ borderRadius:'50%'}}>
             <img src={images.icon1} alt="icon1" />
-            <Typography variant="h6">
+            </Card>
+            <Typography variant="h4" sx={{color:'#fff', mt:2}}>
               Crop Disease Detection
             </Typography>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3} sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+            <Card sx={{ borderRadius:'50%'}}>
           <img src={images.icon2} alt="icon2" />
-          <Typography variant="h6">
+          </Card>
+            <Typography variant="h4" sx={{color:'#fff', mt:2}}>
               Weather & All API Support
             </Typography>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3} sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+            <Card sx={{ borderRadius:'50%'}}>
           <img src={images.icon3} alt="icon3" />
-          <Typography variant="h6">
+          </Card>
+            <Typography variant="h4" sx={{color:'#fff', mt:2}}>
               Irrigation & Modern Farming
             </Typography>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3} sx={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+            <Card sx={{ borderRadius:'50%'}}>
           <img src={images.icon4} alt="icon4" />
-          <Typography variant="h6">
+          </Card>
+            <Typography variant="h4" sx={{color:'#fff', mt:2}}>
               Cross Platform Application
             </Typography>
           </Grid>
@@ -226,6 +235,7 @@ export default function DashboardAppPage() {
             />
           </Grid> */}
         </Grid>
+        <Chatbot/>
       </Container>
     </>
   );

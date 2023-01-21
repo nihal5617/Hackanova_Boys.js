@@ -111,7 +111,7 @@ const Disease = () => {
     <>
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
+          <Typography variant="h3" sx={{color:'#fff'}}>
             Disease Control
           </Typography>
         </Stack>
@@ -119,10 +119,10 @@ const Disease = () => {
           <form onSubmit={handleSubmit}>
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, mt: 2, mb: 2, height:'200px' }}>
               <Box sx={{ width: '100%', mr: { sm: 1 }, border: '1px solid lightgrey', borderRadius: '5px' }}>
-                <img width="100%" src={url} alt="Accepted file types: jpg, png, jpeg." style={{borderRadius:'5px'}}/>
+                <img width="100%" height={200} src={url} alt="Accepted file types: jpg, png, jpeg." style={{borderRadius:'5px'}}/>
               </Box>
               <Box sx={{ width: '100%', ml: { sm: 1 }, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center' }} >
-              <Box sx={{ width: '100%' }}>
+              <Box sx={{ width: '100%', maxWidth:'330px' }}>
                 <Button
                   variant="outlined"
                   fullWidth
@@ -135,7 +135,7 @@ const Disease = () => {
                   <input hidden accept="image/*" type="file" />
                 </Button>
               </Box>
-              <Box sx={{ width: '100%', mt:2 }}>
+              <Box sx={{ width: '100%', mt:2, maxWidth:'330px' }}>
                 <Button variant="contained" fullWidth type="submit" style={{height:'40px'}}>
                   Predict
                 </Button>

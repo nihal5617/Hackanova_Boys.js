@@ -14,33 +14,38 @@ const navConfig = [
   {
     title: 'community',
     path: '/dashboard/community',
-    icon: icon('eva:file-text-fill'),
+    icon: icon('community'),
   },
   {
     title: 'weather',
     path: '/dashboard/weather',
-    icon: icon('eva:file-text-fill'),
+    icon: icon('weather'),
   },
   {
-    title: 'disease control',
+    title: 'disease prediction',
     path: '/dashboard/disease',
-    icon: icon('eva:file-text-fill'),
+    icon: icon('magnifying-glass'),
   },
   {
     title: 'crop prediction',
     path: '/dashboard/crop-prediction',
-    icon: icon('eva:file-text-fill'),
+    icon: icon('plants'),
   },
   {
     title: 'education',
     path: '/dashboard/education',
-    icon: icon('eva:file-text-fill'),
+    icon: icon('education'),
   },
   {
-    title: 'settings',
-    path: '/dashboard/settings',
-    icon: icon('ic_lock'),
-  }
+    title: 'government schemes',
+    path: '/dashboard/government',
+    icon: icon('discount'),
+  },
+  // {
+  //   title: 'settings',
+  //   path: '/dashboard/settings',
+  //   icon: icon('ic_lock'),
+  // }
   // {
   //   title: 'user',
   //   path: '/dashboard/user',

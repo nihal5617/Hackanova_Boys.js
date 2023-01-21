@@ -8,7 +8,7 @@ import Header from './header';
 import Nav from './nav';
 
 import { getPosts } from '../../actions/post/post';
-
+import {images} from '../../constants';
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -31,6 +31,7 @@ const Main = styled('div')(({ theme }) => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
   },
+  backgroundImage: `url(${images.background})`,
 }));
 
 // ----------------------------------------------------------------------
