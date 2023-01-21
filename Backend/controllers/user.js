@@ -85,7 +85,12 @@ export const updateCoins = async (req, res) => {
         const { id } = req.params;
         const { coins } = req.body;
         const updatedUser = await User.findByIdAndUpdate (id, { coins }, { new: true });
-        res.status(200).json(updatedUser);
+        
+        res.status(200).send({
+            id: updatedUser.id,
+            username: updatedUser.username,
+            coins: updatedUser.coins
+        });
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
