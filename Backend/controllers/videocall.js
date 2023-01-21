@@ -6,7 +6,7 @@ export const videolink = async (req, res) => {
       length: 16,
       charset: "alphabetic",
     });
-    const meetlink = `meet.jit.si/${slug}`;
+    const meetlink = `https://meet.jit.si/${slug}`;
     const data = {
       link: meetlink
     }
