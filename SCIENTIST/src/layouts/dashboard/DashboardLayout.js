@@ -8,6 +8,7 @@ import Header from './header';
 import Nav from './nav';
 
 import { getPosts } from '../../actions/post/post';
+import { getFarmers } from '../../actions/farmer/farmer';
 import {images} from '../../constants';
 // ----------------------------------------------------------------------
 
@@ -45,6 +46,7 @@ export default function DashboardLayout() {
   useEffect(() => {
     const getReduxData = () => {
       dispatch(getPosts());
+      dispatch(getFarmers());
     };
     getReduxData();
   }, [dispatch]);

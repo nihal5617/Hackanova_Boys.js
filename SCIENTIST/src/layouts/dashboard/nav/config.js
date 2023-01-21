@@ -17,10 +17,15 @@ const navConfig = [
     icon: icon('community'),
   },
   {
-    title: 'weather',
-    path: '/dashboard/weather',
-    icon: icon('weather'),
+    title: 'Farmer Details',
+    path: '/dashboard/farmers',
+    icon: icon('community'),
   },
+  // {
+  //   title: 'weather',
+  //   path: '/dashboard/weather',
+  //   icon: icon('weather'),
+  // },
   {
     title: 'disease prediction',
     path: '/dashboard/disease',
@@ -35,11 +40,6 @@ const navConfig = [
     title: 'education',
     path: '/dashboard/education',
     icon: icon('education'),
-  },
-  {
-    title: 'government schemes',
-    path: '/dashboard/government',
-    icon: icon('discount'),
   },
   // {
   //   title: 'settings',
