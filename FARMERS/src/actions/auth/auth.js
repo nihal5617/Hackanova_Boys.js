@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT } from '../../constants/actionTypes';
+import { LOGIN, SIGNUP, LOGOUT, UPDATE_COINS } from '../../constants/actionTypes';
 import * as api from '../../api/index';
 
 export const signup = (formData, history) => async (dispatch) => {
@@ -27,6 +27,17 @@ export const logout = (history) => async (dispatch) => {
     try {
         dispatch({ type: LOGOUT});
         history('/');
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updateCoins = (id) => async (dispatch) => {
+    try {
+        console.log(id);
+        const { data } = await api.updateCoins(id);
+        console.log(data);
+        dispatch({ type: UPDATE_COINS, payload: data });
     } catch (error) {
         console.log(error);
     }

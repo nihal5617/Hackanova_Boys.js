@@ -28,6 +28,7 @@ import {
   IconButton,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
+import {images} from '../constants'
 
 const style = {
   position: 'absolute',
@@ -76,6 +77,7 @@ function a11yProps(index) {
 }
 
 const CropPrediction = () => {
+  const [crop, setCrop] = useState('');
   const [conditions, setConditions] = useState({
     n:'',
     p:'',
@@ -100,6 +102,7 @@ const CropPrediction = () => {
       console.log(conditions)
       const {data} = await axios.post('http://127.0.0.1:8000/recommend', conditions)
       console.log(data)
+      setCrop(data.crop)
     }catch(err){
       console.log(err)
     }
@@ -208,6 +211,25 @@ const CropPrediction = () => {
           </Box>
           </form>
         </Card>
+        {
+         crop ? 
+         <Card sx={{ p: 2, mt: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, mt: 2, mb: 2 }}>
+            <Box sx={{ mr: { md: 1 } }}>
+              <img src={images.grape} alt="" height={250} width={250} style={{borderRadius:'5px'}}/>
+            </Box>
+            <Box sx={{ ml: { md: 1 }, mt: { xs: 2, md: 0 } }}>
+              <Typography variant="h3" color="primary" >
+                 Crop: {crop.charAt(0).toUpperCase() + crop.slice(1)}
+              </Typography>
+              <Typography variant="h6" color="primary" >
+                Tips: tips here
+              </Typography>
+              </Box>
+          </Box>
+        </Card>
+        : null  
+        }
       </Container>
     </>
   );
