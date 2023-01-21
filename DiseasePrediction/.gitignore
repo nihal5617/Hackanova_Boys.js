@@ -1,0 +1,3 @@
+venv
+*.pyc
+/Predictor/__pycache__

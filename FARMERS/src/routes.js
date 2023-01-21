@@ -17,6 +17,7 @@ import CropPrediction from './pages/CropPrediction';
 import Register from './pages/Register';
 import Post from './pages/Post'
 import Education from './pages/Education'
+import Government from './pages/Government/Government'
 
 // ----------------------------------------------------------------------
 const user = (JSON.parse(localStorage.getItem('profile')));
@@ -38,7 +39,8 @@ export default function Router() {
         { path: 'settings', element: <Settings /> },
         { path: 'crop-prediction', element: <CropPrediction />},
         { path: 'post/:id', element: <Post />},
-        { path: 'education', element: <Education />}
+        { path: 'education', element: <Education />},
+        { path: 'government', element: <Government />},
       ],
     },
     {
