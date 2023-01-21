@@ -1,39 +1,35 @@
 import Scientist from '../models/scientist.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import {check,validationResult } from 'express-validator';
 
 
 export const signup = async (req, res) => {
-
     console.log(req.body)
     
     try {
-        const { name, username, password, phone,email, location  } = req.body;
-        let scientist = await Scientist.findOne({ username });
-        if (scientist) {
-            return res.status(400).json({ errors: [{ msg: 'scientist Exists!' }] });
+        const { name, username, password, phone, location  } = req.body;
+        let user = await Scientist.findOne({ username });
+        if (user) {
+            return res.status(400).json({ errors: [{ msg: 'User Exists!' }] });
         }
-        scientist = new Scientist({
+        user = new Scientist({
             name,
             username,
             password,
-            email,
             phone,
             location
         });
         console.log('here');
         const salt = await bcrypt.genSalt();
-        scientist.password = await bcrypt.hash(password, salt);
+        user.password = await bcrypt.hash(password, salt);
 
-        await scientist.save();
-
-        const token = jwt.sign({id: scientist.id}, process.env.SECRET, {
+        await user.save();
+        const token = jwt.sign({id: user.id}, process.env.SECRET, {
             expiresIn: 86400 // 24 hours
         });
         res.status(200).send({
-            id: scientist.id,
-            username: scientist.username,
+            id: user.id,
+            username: user.username,
             token: token
         });
     } catch (err) {
@@ -44,17 +40,13 @@ export const signup = async (req, res) => {
 
 export const signin = async (req, res) => {
     try{
-        const scientist = await Scientist.findOne({
-            where: {
-                email: req.body.email
-            }
-        });
-        if(!scientist){
-            return res.status(404).send({message: "scientist not found."});
+        const user = await Scientist.findOne({username : req.body.username});
+        if(!user){
+            return res.status(404).send({message: "user not found."});
         }
         const passwordIsValid = bcrypt.compareSync(
             req.body.password,
-            scientist.password
+            user.password
         );
         if(!passwordIsValid){
             return res.status(401).send({
@@ -62,15 +54,26 @@ export const signin = async (req, res) => {
                 message: "Invalid Password!"
             });
         }
-        const token = jwt.sign({id: scientist.id}, process.env.SECRET, {
+        const token = jwt.sign({id: user.id}, process.env.SECRET, {
             expiresIn: 86400 // 24 hours
         });
         res.status(200).send({
-            id: scientist.id,
-            username: scientist.username,
+            id: user.id,
+            username: user.username,
             token: token
         });
     }catch(err){
         res.status(500).send({message: err.message});
     }
 }
+
+//get all users
+export const getAllUsers = async (req, res) => {
+    try{
+        const users = await Scientist.find();
+        res.status(200).json(users);
+    }catch(err){
+        res.status(500).json({message: err.message});
+    }
+}
+

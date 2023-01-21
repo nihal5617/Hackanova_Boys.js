@@ -1,7 +1,6 @@
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import {check,validationResult } from 'express-validator';
 
 
 export const signup = async (req, res) => {
@@ -65,5 +64,15 @@ export const signin = async (req, res) => {
         });
     }catch(err){
         res.status(500).send({message: err.message});
+    }
+}
+
+//get all users
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
     }
 }

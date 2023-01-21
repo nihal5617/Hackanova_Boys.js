@@ -41,11 +41,7 @@ export const signup = async (req, res) => {
 
 export const signin = async (req, res) => {
     try{
-        const admin = await Admin.findOne({
-            where: {
-                email: req.body.email
-            }
-        });
+        const admin = await Admin.findOne({username : req.body.username});
         if(!user){
             return res.status(404).send({message: "user not found."});
         }
