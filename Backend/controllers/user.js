@@ -30,7 +30,8 @@ export const signup = async (req, res) => {
         res.status(200).send({
             id: user.id,
             username: user.username,
-            token: token
+            token: token,
+            coins: user.coins
         });
     } catch (err) {
         console.error(err.message);
@@ -60,7 +61,8 @@ export const signin = async (req, res) => {
         res.status(200).send({
             id: user.id,
             username: user.username,
-            token: token
+            token: token,
+            coins: user.coins
         });
     }catch(err){
         res.status(500).send({message: err.message});
