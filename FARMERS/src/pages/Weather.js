@@ -7,7 +7,7 @@ const Weather = () => {
     <>
     <Container sx={{
     }}>
-      <h1>Weather</h1>
+      <h1 style={{color:'#fff'}}>Weather</h1>
     </Container>
     </>
   )

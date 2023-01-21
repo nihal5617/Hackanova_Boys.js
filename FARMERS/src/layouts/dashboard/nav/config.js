@@ -41,11 +41,11 @@ const navConfig = [
     path: '/dashboard/government',
     icon: icon('discount'),
   },
-  {
-    title: 'settings',
-    path: '/dashboard/settings',
-    icon: icon('ic_lock'),
-  }
+  // {
+  //   title: 'settings',
+  //   path: '/dashboard/settings',
+  //   icon: icon('ic_lock'),
+  // }
   // {
   //   title: 'user',
   //   path: '/dashboard/user',
