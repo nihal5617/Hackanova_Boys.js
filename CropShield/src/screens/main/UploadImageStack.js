@@ -3,9 +3,10 @@ import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import React from 'react';
 import styles from '../../styles/styles';
 import UploadImage from './screens/UploadImage';
+import AddPost from './screens/forum/AddPost';
 
 const Stack = createNativeStackNavigator();
-const tabHiddenRoutes = [];
+const tabHiddenRoutes = ['AddPost'];
 
 export default function UploadImageStack({navigation, route}) {
   React.useLayoutEffect(() => {
@@ -24,6 +25,7 @@ export default function UploadImageStack({navigation, route}) {
   return (
     <Stack.Navigator>
       <Stack.Screen name="UploadImage" component={UploadImage} />
+      <Stack.Screen name="AddPost" component={AddPost} />
     </Stack.Navigator>
   );
 }

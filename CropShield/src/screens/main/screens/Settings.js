@@ -25,6 +25,7 @@ const accountInfo = {
   name: "Farmer's Name",
   mobile: '1234567890',
   email: 'username',
+  credits: '10',
 };
 export default function Settings({navigation}) {
   const [logo, setLogo] = React.useState(null);
@@ -83,7 +84,7 @@ export default function Settings({navigation}) {
       } else {
         console.log('response', response['assets'][0]);
         setLogo(response['assets'][0]);
-        console.log('logo', logo)
+        console.log('logo', logo);
       }
     });
   };
@@ -124,21 +125,12 @@ export default function Settings({navigation}) {
             <Text style={internalStyles.name}>{accountInfo.name}</Text>
 
             <Text style={internalStyles.infoText}>{accountInfo.mobile}</Text>
-
-            <Text style={[internalStyles.infoText, {marginTop: 8}]}>
+            <Text style={internalStyles.infoText}>Credits Earned : {accountInfo.credits}</Text>
+            <Text style={[internalStyles.infoText]}>
               {accountInfo.email}
             </Text>
           </View>
         </View>
-
-        <Ripple onPress={() => navigateTo('Profile')}>
-          {global.drawIcon(
-            constants.IC_FEATHER,
-            'chevron-right',
-            24,
-            '#171717',
-          )}
-        </Ripple>
       </View>
     );
   };

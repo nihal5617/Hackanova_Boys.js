@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, StyleSheet, Text, ScrollView} from 'react-native';
+import {View, StyleSheet, Text, ScrollView, Linking} from 'react-native';
 import ImagePicker from '../../../components/ImagePicker';
 import constants from '../../../utility/constants';
 import styles from '../../../styles/styles';
@@ -50,9 +50,13 @@ export default function UploadImage({navigation}) {
     // }
   };
 
+  const onPressSecond=()=>{
+    Linking.openURL('tel:9136263741')
+  }
+
   const check = data => {
     const data2 = new FormData();
-    data2.append('image',data.image.uri);
+    data2.append('image', data.image.uri);
     console.log(data2);
     global.isOnline().then(isNetworkAvailable => {
       if (!isNetworkAvailable)
@@ -167,6 +171,16 @@ export default function UploadImage({navigation}) {
               {getKeyValue('Treatment', output.Treatment)}
             </View>
           </Collapsible>
+          <View style={{marginTop: 15, alignItems: 'center'}}>
+            <Text style={{color:colors.BLACK}}>If you are not satisfied with the this result</Text>
+            <Ripple onPress={() => {navigation.navigate('AddPost')}}>
+              <Text style={{textDecorationLine:'underline',color:colors.RED}}>Ask about this in Our Community</Text>
+            </Ripple>
+            <Text>Or</Text>
+            <Ripple onPress={() => {onPressSecond()}}>
+              <Text style={{textDecorationLine:'underline',color:colors.RED}}>Ask an Expert</Text>
+            </Ripple>
+          </View>
         </View>
       )}
     </ScrollView>

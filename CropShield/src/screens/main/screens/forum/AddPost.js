@@ -23,6 +23,7 @@ const accountInfo = {
   mobile: '1234567890',
   email: 'username',
   image: require('../../../../assets/images/logo.jpg'),
+  credits: '10',
 };
 
 const inputs = {
@@ -100,7 +101,7 @@ export default function AddPost({navigation}) {
         style={[
           internalStyles.twoColumn,
           {
-            marginBottom: 29,
+            marginBottom: 10,
           },
         ]}>
         <View style={{flexDirection: 'row'}}>
@@ -113,8 +114,8 @@ export default function AddPost({navigation}) {
             <Text style={internalStyles.name}>{accountInfo.name}</Text>
 
             <Text style={internalStyles.infoText}>{accountInfo.mobile}</Text>
-
-            <Text style={[internalStyles.infoText, {marginTop: 8}]}>
+            <Text style={internalStyles.infoText}>Credits : {accountInfo.credits}</Text>
+            <Text style={[internalStyles.infoText]}>
               {accountInfo.email}
             </Text>
           </View>
@@ -132,6 +133,12 @@ export default function AddPost({navigation}) {
         },
       ]}>
       {getAccountInfo()}
+      <View
+        style={{
+          marginBottom: 10,
+        }}>
+        <Text style={internalStyles.title}>Increase Your Credits by adding valuable information to the Community</Text>
+      </View>
       <ImagePicker
         name={apiKey.IMAGE}
         title={'Photo of your Crop'}
