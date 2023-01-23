@@ -43,6 +43,8 @@ npm run dev
 
 - [Cloudinary](https://cloudinary.com/) for storing media files like photos
  and videos
+ 
+ -[Render](https://render.com/) for hosting the application
 
 - [MongoDB](https://www.mongodb.com/) for database
 
