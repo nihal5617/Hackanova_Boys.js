@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {Box, TextField, Typography, Button, Card} from '@mui/material'
 import { addPost } from '../../actions/post/post';
+import { updateCoins } from '../../actions/auth/auth';
 
 const PostForm = () => {
 
@@ -26,9 +27,18 @@ const PostForm = () => {
   };
 
   const id = JSON.parse(localStorage.getItem('profile')).id;
+  const coins = JSON.parse(localStorage.getItem('profile')).coins;
 
   const dispatch = useDispatch();
 
+
+  let sum = 0;
+
+  const updateCoinsValue = () => {
+     sum = coins + 10;
+  }
+
+  console.log(id);
 
   const handleOnSubmit = (e) => {
     try{
@@ -39,6 +49,7 @@ const PostForm = () => {
       formData.append('desc', post.desc);
       formData.append('crop', post.crop);
       dispatch(addPost(formData, id));
+      dispatch(updateCoins(id));
     }catch(err){
       console.log(err);
     }

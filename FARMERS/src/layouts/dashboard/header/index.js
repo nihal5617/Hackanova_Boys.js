@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, IconButton, Typography } from '@mui/material';
+import { useSelector } from 'react-redux';
 // utils
+import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
 import { bgBlur } from '../../../utils/cssStyles';
 // components
 import Iconify from '../../../components/iconify';
@@ -43,6 +45,8 @@ Header.propTypes = {
 };
 
 export default function Header({ onOpenNav }) {
+  const coins = (useSelector((state) => state.auth.coins));
+  console.log(coins);
   return (
     <StyledRoot>
       <StyledToolbar>
@@ -68,6 +72,20 @@ export default function Header({ onOpenNav }) {
             sm: 1,
           }}
         >
+          <Box sx={{display:'flex', flexDirection:'row', alignItems:'center', backgroundColor:'#fff', borderRadius:'5px', height:'30px'}}>
+            {
+              coins ? (
+                <Typography variant="h6" color="primary" sx={{ml:1, mr:0.5}}>
+                Your Tokens: {coins}
+            </Typography> 
+              ) : (
+                <Typography variant="h6" color="primary" sx={{ml:1, mr:0.5}}>
+                Your Tokens: 0
+            </Typography>
+              )
+            }
+            <SavingsOutlinedIcon sx={{ color: `primary.main`, ml:0.5, mr:1 }} />
+          </Box>
           <LanguagePopover />
           {/* <NotificationsPopover />
           <AccountPopover /> */}

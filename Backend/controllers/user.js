@@ -82,10 +82,24 @@ export const getAllUsers = async (req, res) => {
 //update token
 export const updateCoins = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { coins } = req.body;
-        const updatedUser = await User.findByIdAndUpdate (id, { coins }, { new: true });
-        res.status(200).json(updatedUser);
+        const { id } = req.params
+        console.log(id);
+        //update coins by 5 for every crop sold
+        const updatedUser = await User
+            .findById (id)
+            .exec();
+        updatedUser.coins = updatedUser.coins + 10;
+        await updatedUser.save();
+        const token = jwt.sign({id: updatedUser.id}, process.env.SECRET, {
+            expiresIn: 86400 // 24 hours
+        });
+        console.log(updatedUser);
+        res.status(200).send({
+            id: updatedUser.id,
+            username: updatedUser.username,
+            token: token,
+            coins: updatedUser.coins
+        });
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

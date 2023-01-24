@@ -16,11 +16,11 @@ const navConfig = [
     path: '/dashboard/community',
     icon: icon('community'),
   },
-  {
-    title: 'weather',
-    path: '/dashboard/weather',
-    icon: icon('weather'),
-  },
+  // {
+  //   title: 'weather',
+  //   path: '/dashboard/weather',
+  //   icon: icon('weather'),
+  // },
   {
     title: 'disease prediction',
     path: '/dashboard/disease',

@@ -54,6 +54,7 @@ export default function LanguagePopover() {
   // }
 
   const handleTour = () => {
+    window.location.href = "https://www.youtube.com/watch?v=Q8TXgCzxEnw&ab_channel=TheCodingTrain";
   }
 
   return (

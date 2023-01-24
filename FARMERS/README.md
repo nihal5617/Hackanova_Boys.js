@@ -1,40 +1,144 @@
-## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
+# CropShield Website
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+![MIT](https://img.shields.io/github/license/AnnadataHackfest/ReactWebsite?color=blue)
 
-> Free React Admin Dashboard made with Material-UI components and React.
+## Getting Started
 
-![preview](public/assets/preview.jpg)
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **6** Demo pages                                      | **50+** demo pages                                                |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ Next.js version                                                 |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
+### Prerequisites
 
-## Page demo
+Your machine should have Npm (or Yarn) installed to use it locally.
 
-- [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+## Setup and Installation
 
-## Getting started
+### Setting up the repository locally
 
-- Recommended `node js 16.x` and `npm 6+`. (suggestion v16.15.0)
-- Install dependencies: `npm install` / `yarn install`
-- Start the project: `npm run start` / `yarn start`
+1. First fork the repo :fork_and_knife: to your account.  
+   Go to the forked repo and clone it :busts_in_silhouette: to your local machine:
 
-## License
+```sh
+git clone https://github.com/Your_Username/ReactWebsite.git
+```
 
-Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
+This will make a copy of the code to your local machine.
 
-## Contact us
+2. Now move to the `ReactWebsite` directory.
 
-Email Us: support@minimals.cc
+```sh
+cd ReactWebsite
+```
+
+3. Now check the remote of your local code by:
+
+```sh
+git remote -v
+```
+
+The response should look like:
+
+```sh
+origin	https://github.com/Your_Username/ReactWebsite.git (fetch)
+origin	https://github.com/Your_Username/ReactWebsite.git (push)
+```
+
+To add upstream to remote, run:
+
+```sh
+git remote add upstream https://github.com/AnnadataHackfest/ReactWebsite.git
+```
+
+Again run `git remote -v`, the response should look like:
+
+```sh
+origin	https://github.com/Your_Username/ReactWebsite.git (fetch)
+origin	https://github.com/Your_Username/ReactWebsite.git (push)
+upstream	https://github.com/AnnadataHackfest/ReactWebsite (fetch)
+upstream	https://github.com/AnnadataHackfest/ReactWebsite (push)
+```
+
+4. Once the remote is set, install all the necessary dependencies by the following command:
+
+```sh
+npm install
+```
+
+### Run locally
+
+Run the below command to start the server:
+
+```sh
+npm start
+```
+
+Go to: [http://localhost:3000](http://localhost:3000)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

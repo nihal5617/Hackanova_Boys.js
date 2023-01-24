@@ -9,6 +9,6 @@ router.post('/signin', signin);
 router.get('/getAllUsers', getAllUsers);
 router.get('/getCropDetailsById/:id', getCropDetailsById);
 router.post('/postCropDetails', postCropDetails);
-router.put('/updateToken/:id', updateCoins);
+router.post('/updateToken/:id', updateCoins);
 
 export default router;
