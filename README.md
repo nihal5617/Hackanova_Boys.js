@@ -34,6 +34,8 @@ npm run run-all
 
 - [React](https://reactjs.org/) for frontend
 
+- [React Native](https://reactnative.dev/) for Cross Platform Application
+
 - [Node.js](https://nodejs.org/) for backend
 
 - [Django](https://www.djangoproject.com/) for AI backend
