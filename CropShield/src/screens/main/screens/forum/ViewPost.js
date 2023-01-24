@@ -57,7 +57,7 @@ export default function ViewPost({navigation}) {
     navigation.setOptions({
       header: () => (
         <Header
-          title={'Item.Title'}
+          title={'Potato Late Blight'}
           showBackButton={true}
           navigation={navigation}
         />
