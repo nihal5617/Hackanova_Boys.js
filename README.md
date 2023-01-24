@@ -15,16 +15,16 @@ Some of its features are
 
 ## Scripts
 
-To install all frontend dependencies, backend dependencies and concurrently. Run
+To install all frontend dependencies, backend dependencies with a single command concurrently
 
 ```sh
 npm run install-all
 ```
 
-To start backend and frontend server. Run
+To run all the files
 
 ```sh
-npm run dev
+npm run run-all
 ```
 
 ## Tech stack used
