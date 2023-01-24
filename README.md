@@ -13,6 +13,9 @@ Some of its features are
 
 🎯 Farmers' community section having chat option, posting imahges/videos, QnA, and many more other features to make our platform interactive
 
+## Video
+https://www.youtube.com/watch?v=Zq-plzHd58g
+
 ## Scripts
 
 To install all frontend dependencies, backend dependencies with a single command concurrently
