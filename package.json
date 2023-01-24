@@ -1,0 +1,19 @@
+{
+  "name": "hackanova_boys",
+  "version": "1.0.0",
+  "description": "Install and Start ",
+  "scripts": {
+    "install-all": "cd ADMIN && npm install && cd .. && cd Backend && npm install && cd .. && cd CropShield && npm install && cd .. && cd FARMERS && npm install && cd .. && cd SCIENTIST && npm install && cd DiseasePrediction && pip install -r requirement.txt",
+    "run-all":"cd ADMIN && npm start && cd .. && cd Backend && npm start && cd .. && cd CropShield && npx react-native run-android && cd .. && cd FARMERS && npm start && cd .. && cd SCIENTIST && npm start && cd DiseasePrediction && python manage.py runserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darshm1029/Hackanova_Boys.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darshm1029/Hackanova_Boys.js/issues"
+  },
+  "homepage": "https://github.com/darshm1029/Hackanova_Boys.js#readme"
+}
